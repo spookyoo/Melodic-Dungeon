@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://com8gxm4ey72s"]
+
+[ext_resource type="Script" path="res://utility/gen_test.gd" id="1_0vwcg"]
+[ext_resource type="Script" path="res://utility/camera.gd" id="2_4yhsd"]
+
+[node name="genTest" type="Node3D"]
+script = ExtResource("1_0vwcg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_4yhsd")

@@ -1,36 +1,110 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck5gqfxvasybm"]
+[gd_scene load_steps=3 format=3 uid="uid://ck5gqfxvasybm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4jon"]
-albedo_color = Color(0.201527, 0.201527, 0.201527, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sypec"]
+albedo_color = Color(0.605274, 0.605274, 0.605274, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lnnva"]
-material = SubResource("StandardMaterial3D_v4jon")
-size = Vector2(15, 15)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hcbu"]
-albedo_color = Color(0.0646965, 0.0646965, 0.0646965, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_f0pjg"]
-material = SubResource("StandardMaterial3D_7hcbu")
-size = Vector3(15, 1, 0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cpkb"]
+albedo_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [node name="room" type="Node3D"]
 
-[node name="floor" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_lnnva")
+[node name="floor" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(30, 0.1, 30)
+material = SubResource("StandardMaterial3D_sypec")
 
-[node name="wallN" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7.5)
-mesh = SubResource("BoxMesh_f0pjg")
+[node name="wallN" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -15)
+use_collision = true
+size = Vector3(30, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
 
-[node name="wallS" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
-mesh = SubResource("BoxMesh_f0pjg")
+[node name="wallE" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 4, 0)
+use_collision = true
+size = Vector3(30, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
 
-[node name="wallE" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0.5, 0)
-mesh = SubResource("BoxMesh_f0pjg")
+[node name="wallS" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 15)
+use_collision = true
+size = Vector3(30, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
 
-[node name="wallW" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 0.5, 0)
-mesh = SubResource("BoxMesh_f0pjg")
+[node name="wallW" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 4, 0)
+use_collision = true
+size = Vector3(30, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorN" type="Node3D" parent="."]
+visible = false
+
+[node name="doorL" type="CSGBox3D" parent="doorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4, -15)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorM" type="CSGBox3D" parent="doorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.25, -15)
+size = Vector3(4, 3.5, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorR" type="CSGBox3D" parent="doorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4, -15)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorE" type="Node3D" parent="."]
+visible = false
+
+[node name="doorL" type="CSGBox3D" parent="doorE"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 4, -8.5)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorM" type="CSGBox3D" parent="doorE"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 6.25, 0)
+size = Vector3(4, 3.5, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorR" type="CSGBox3D" parent="doorE"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 4, 8.5)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorS" type="Node3D" parent="."]
+visible = false
+
+[node name="doorL" type="CSGBox3D" parent="doorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4, 15)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorM" type="CSGBox3D" parent="doorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.25, 15)
+size = Vector3(4, 3.5, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorR" type="CSGBox3D" parent="doorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4, 15)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorW" type="Node3D" parent="."]
+visible = false
+
+[node name="doorL" type="CSGBox3D" parent="doorW"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 4, 8.5)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorM" type="CSGBox3D" parent="doorW"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 6.25, 0)
+size = Vector3(4, 3.5, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="doorR" type="CSGBox3D" parent="doorW"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 4, -8.5)
+size = Vector3(13, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")

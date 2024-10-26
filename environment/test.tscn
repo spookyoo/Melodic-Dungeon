@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://b4t03stnwiinv"]
+[gd_scene load_steps=7 format=3 uid="uid://b4t03stnwiinv"]
+
+[ext_resource type="PackedScene" uid="uid://ck5gqfxvasybm" path="res://environment/room.tscn" id="1_ilsom"]
+[ext_resource type="PackedScene" uid="uid://dc25vi7wiy0wt" path="res://player/player.tscn" id="2_jehi3"]
+[ext_resource type="Texture2D" uid="uid://cw40x0iilalk4" path="res://player/shteve.webp" id="3_jost4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h1efp"]
+
+[sub_resource type="Sky" id="Sky_nvcn0"]
+sky_material = SubResource("ProceduralSkyMaterial_h1efp")
+
+[sub_resource type="Environment" id="Environment_t5co2"]
+background_mode = 2
+sky = SubResource("Sky_nvcn0")
+tonemap_mode = 2
 
 [node name="Test" type="Node3D"]
+
+[node name="room" parent="." instance=ExtResource("1_ilsom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131421, 0, -0.40621)
+
+[node name="Player" parent="." instance=ExtResource("2_jehi3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955884, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t5co2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1625.69, 873.5)
+scale = Vector2(0.62844, 0.62844)
+texture = ExtResource("3_jost4")
