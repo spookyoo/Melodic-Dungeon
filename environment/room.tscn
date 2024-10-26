@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck5gqfxvasybm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4jon"]
+albedo_color = Color(0.201527, 0.201527, 0.201527, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnnva"]
+material = SubResource("StandardMaterial3D_v4jon")
+size = Vector2(15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hcbu"]
+albedo_color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0pjg"]
+material = SubResource("StandardMaterial3D_7hcbu")
+size = Vector3(15, 1, 0.5)
+
+[node name="room" type="Node3D"]
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_lnnva")
+
+[node name="wallN" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7.5)
+mesh = SubResource("BoxMesh_f0pjg")
+
+[node name="wallS" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
+mesh = SubResource("BoxMesh_f0pjg")
+
+[node name="wallE" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0.5, 0)
+mesh = SubResource("BoxMesh_f0pjg")
+
+[node name="wallW" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 0.5, 0)
+mesh = SubResource("BoxMesh_f0pjg")
