@@ -1,7 +1,7 @@
 class_name FreeLookCamera extends Camera3D
 
 # Modifier keys' speed multiplier
-const SHIFT_MULTIPLIER = 2.5
+const SHIFT_MULTIPLIER = 20
 const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
 

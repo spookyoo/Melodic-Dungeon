@@ -6,12 +6,12 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h1efp"]
 
-[sub_resource type="Sky" id="Sky_nvcn0"]
+[sub_resource type="Sky" id="Sky_4xvkm"]
 sky_material = SubResource("ProceduralSkyMaterial_h1efp")
 
 [sub_resource type="Environment" id="Environment_t5co2"]
 background_mode = 2
-sky = SubResource("Sky_nvcn0")
+sky = SubResource("Sky_4xvkm")
 tonemap_mode = 2
 
 [node name="Test" type="Node3D"]
