@@ -15,9 +15,8 @@ var rooms = {}
 var lastDirection = ""
 var moveHistory = 0
 
-var starterNode
+var startNode
 var endNode
-
 
 func _ready():
 	print("---------------------")
@@ -37,17 +36,35 @@ func generateDungeon():
 		floors.append(column)
 #PATHING
 	mainPath()
+	addBranches()
 #INSTANTIATE ROOMS
 	for x in range(dungeonWidth):
 		for z in range(dungeonHeight):
 			if floors[x][z] != 0:
 				instantiateRoom(x,z)
 #CLEAN
+	for room in rooms:
+		generateDoors(room[0],room[1])
+	startRoom()
 
 func instantiateRoom(x,z):
 	var newRoom = roomScene.instantiate()
 	rooms[[x,z]] = [newRoom,1]
 	newRoom.position = Vector3(x * roomSize.x, 0, z * roomSize.z)
+	if floors[x][z] == 2:
+		startNode = newRoom
+		rooms[[x,z]] = [newRoom,2]
+		var objectMaterial = newRoom.get_node("floor").material.duplicate()
+		objectMaterial = objectMaterial as StandardMaterial3D
+		objectMaterial.albedo_color = Color(0,1,0)
+		newRoom.get_node("floor").material = objectMaterial
+	elif floors[x][z] == 3:
+		endNode = newRoom
+		rooms[[x,z]] = [newRoom,3]
+		var objectMaterial = newRoom.get_node("floor").material.duplicate()
+		objectMaterial = objectMaterial as StandardMaterial3D
+		objectMaterial.albedo_color = Color(1,0,0)
+		newRoom.get_node("floor").material = objectMaterial
 	add_child(newRoom)
 
 func mainPath():
@@ -79,6 +96,73 @@ func mainPath():
 					return
 	floors[current[0]][current[1]] = 3
 
+func addBranches():
+	var branchCandidates
+	var minBranchLength = 1#floor(mainBranchLength/3)
+	var maxBranchLength = 2#mainBranchLength/2
+	var baseProbability = 0.2#(1/mainBranchLength) + 0.15
+	var branchProbability = baseProbability
+	if mainBranch.size() > 2:
+		branchCandidates = mainBranch.slice(0, mainBranch.size() - 2)
+		for room in branchCandidates:
+			if randf_range(0,1) <= branchProbability:
+				if generateBranch(room,minBranchLength,maxBranchLength): #0.275
+					branchProbability = baseProbability - 0.16#(maxBranchLength*0.015)
+					print("BRANCH GENERATED ROOM: "+ str(room))
+				else:
+					branchProbability += 0.9 #(mainBranchLength/mainBranchLength^2) - 0.07
+			else:
+				branchProbability += 0.9 #(mainBranchLength/mainBranchLength^2) - 0.07
+			branchProbability = clamp(branchProbability, 0, 1)
+	else:
+		return
+
+func generateBranch(start, min_length, max_length):
+	var branch_length = randi_range(min_length, max_length)
+	var current = start
+	var branch = []
+	var lastDirection = ""
+	var moveHistory = 0
+	
+	for i in range(branch_length):
+		var validDirs = getValidDirections(current)
+		if validDirs.size() == 0:
+			break
+		var chosenDirection = chooseDirection(validDirs, 0.9)
+		if chosenDirection == null:
+			break
+		current = moveInDirection(current, chosenDirection)
+		floors[current[0]][current[1]] = 1
+		branch.append(current)
+		
+	if branch.size() >= min_length:
+		return true
+	else:
+		for room in branch:
+			floors[room[0]][room[1]] = 0
+		return false
+
+func generateDoors(x,z):
+	var target = rooms[[x,z]][0]
+	var doorDirections = hasRooms(x,z)
+	for direction in doorDirections:
+		match direction:
+			"left":
+				target.doorW = true
+			"right":
+				target.doorE = true
+			"up":
+				target.doorN = true
+			"down":
+				target.doorS = true
+	target.doors()
+
+func startRoom():
+	camera.position = startNode.position
+	camera.position.y += 3
+	print(endNode)
+	
+
 #HELPER FUNCTIONS
 func moveInDirection(current, direction):
 	if direction == "up":
@@ -103,19 +187,17 @@ func chooseDirection(validDirs, verticalChance):
 	var chosenDirection = ""
 
 	if moveHistory >= maxStraightLength or not validDirs.has(lastDirection):
-		validDirs.erase(lastDirection)  # Force change in direction
+		validDirs.erase(lastDirection)
 		moveHistory = 0
 
-	# Choose a new direction based on verticalChance (favor vertical or horizontal)
 	if validDirs.has("right") and randf_range(0, 1) > verticalChance:
 		chosenDirection = "right"
 	else:
 		if validDirs.size() > 0:
 			chosenDirection = validDirs[randi_range(0, validDirs.size() - 1)]
 		else:
-			return null  # or any default direction you prefer
+			return null
 
-	# Track the new direction and update consecutive move counter
 	if chosenDirection == lastDirection:
 		moveHistory += 1
 	else:
