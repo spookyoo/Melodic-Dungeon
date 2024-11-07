@@ -24,12 +24,9 @@ var completed = []
 func _ready():
 	print("---------------------")
 	generateDungeon()
-	print(rooms)
-	for floor in floors:
-		print(floor)
-	print(mainBranch)
+	#for floor in floors:
+		#print(floor)
 	startRun()
-	print(completed)
 
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
@@ -58,6 +55,8 @@ func generateDungeon():
 func instantiateRoom(x,z):
 	var newRoom = roomScene.instantiate()
 	newRoom.location = [x,z]
+	newRoom.roomStart.connect(self.roomActivate)
+	
 	rooms[[x,z]] = [newRoom,1]
 	newRoom.position = Vector3(x * roomSize.x, 0, z * roomSize.z)
 	if floors[x][z] == 2:
@@ -177,6 +176,27 @@ func startRun():
 	completed.append(startNode[0])
 	completedDoors(completed[0][0],completed[0][1])
 	return
+
+func roomActivate(x,z):
+	if ([x,z] != startNode[0]) && !(completed.has([x,z])):
+		var target = rooms[[x,z]][0]
+		completed.append([x,z])
+		closeDoors(x,z)
+		
+		var enemies = spawnRoom()
+		while enemies.size() > 0:
+			pass
+		await get_tree().create_timer(3.0).timeout
+		completedDoors(x,z)
+
+func spawnRoom():
+	var enemies = []
+	return enemies
+
+func closeDoors(x,z):
+	var target = rooms[[x,z]][0]
+	target.closeDoors(target.doors)
+	
 
 func completedDoors(x,z):
 	var target = rooms[[x,z]][0]

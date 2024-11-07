@@ -8,6 +8,8 @@ extends Node3D
 var location
 var doors = []
 
+signal roomStart #signal -> generation
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -58,6 +60,27 @@ func openDoors(directions):
 				$doorW/door.visible = false
 				$doorW/door.use_collision = false
 
+func closeDoors(directions):
+	for direction in directions:
+		match direction:
+			"up":
+				$doorN/door.visible = true
+				$doorN/door.use_collision = true
+			"right":
+				$doorE/door.visible = true
+				$doorE/door.use_collision = true
+			"down":
+				$doorS/door.visible = true
+				$doorS/door.use_collision = true
+			"left":
+				$doorW/door.visible = true
+				$doorW/door.use_collision = true
+			
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_room_entered(area):
+	roomStart.emit(location[0],location[1])
