@@ -1,12 +1,13 @@
 extends Node3D
 
 @export var roomScene : PackedScene
-@export var dungeonWidth : int = 12
-@export var dungeonHeight : int = 12
+@export var dungeonWidth : int = 9
+@export var dungeonHeight : int = 7
 @export var mainBranchLength : int = 8
 @export var roomSize : Vector3 = Vector3(30,0,30)
 
-@onready var camera = $Camera3D
+#@onready var camera = $Camera3D
+@onready var player = $Player
 
 var floors = []
 var mainBranch = []
@@ -15,13 +16,20 @@ var rooms = {}
 var lastDirection = ""
 var moveHistory = 0
 
-var startNode
-var endNode
+var startNode = []
+var endNode = []
+
+var completed = []
 
 func _ready():
 	print("---------------------")
 	generateDungeon()
 	print(rooms)
+	for floor in floors:
+		print(floor)
+	print(mainBranch)
+	startRun()
+	print(completed)
 
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
@@ -49,17 +57,16 @@ func generateDungeon():
 
 func instantiateRoom(x,z):
 	var newRoom = roomScene.instantiate()
+	newRoom.location = [x,z]
 	rooms[[x,z]] = [newRoom,1]
 	newRoom.position = Vector3(x * roomSize.x, 0, z * roomSize.z)
 	if floors[x][z] == 2:
-		startNode = newRoom
+		startNode.append([x,z])
+		startNode.append(newRoom)
 		rooms[[x,z]] = [newRoom,2]
-		var objectMaterial = newRoom.get_node("floor").material.duplicate()
-		objectMaterial = objectMaterial as StandardMaterial3D
-		objectMaterial.albedo_color = Color(0,1,0)
-		newRoom.get_node("floor").material = objectMaterial
 	elif floors[x][z] == 3:
-		endNode = newRoom
+		endNode.append([x,z])
+		endNode.append(newRoom)
 		rooms[[x,z]] = [newRoom,3]
 		var objectMaterial = newRoom.get_node("floor").material.duplicate()
 		objectMaterial = objectMaterial as StandardMaterial3D
@@ -87,7 +94,6 @@ func mainPath():
 				break
 			else:
 				# BACKTRACK
-				print("BACKTRACK")
 				if mainBranch.size() > 1:
 					mainBranch.pop_back()
 					current = mainBranch.back()
@@ -108,7 +114,6 @@ func addBranches():
 			if randf_range(0,1) <= branchProbability:
 				if generateBranch(room,minBranchLength,maxBranchLength): #0.275
 					branchProbability = baseProbability - 0.16#(maxBranchLength*0.015)
-					print("BRANCH GENERATED ROOM: "+ str(room))
 				else:
 					branchProbability += 0.9 #(mainBranchLength/mainBranchLength^2) - 0.07
 			else:
@@ -149,21 +154,64 @@ func generateDoors(x,z):
 		match direction:
 			"left":
 				target.doorW = true
+				target.doors.append("left")
 			"right":
 				target.doorE = true
+				target.doors.append("right")
 			"up":
 				target.doorN = true
+				target.doors.append("up")
 			"down":
 				target.doorS = true
-	target.doors()
+				target.doors.append("down")
+	target.drawDoors()
 
 func startRoom():
-	camera.position = startNode.position
-	camera.position.y += 3
-	print(endNode)
-	
+	#camera.position = startNode[1].position
+	#camera.position.y += 3
+	player.position = startNode[1].position
+	player.position.y += 2
+	#print(endNode)
+
+func startRun():
+	completed.append(startNode[0])
+	completedDoors(completed[0][0],completed[0][1])
+	return
+
+func completedDoors(x,z):
+	var target = rooms[[x,z]][0]
+	target.openDoors(target.doors)
+	for adjacent in getAdjacent(x,z):
+		var node = rooms[adjacent][0]
+		var directions = []
+		for room in getAdjacent(adjacent[0],adjacent[1]):
+			if completed.has(room):
+				if [adjacent[0],adjacent[1]] == [room[0],room[1]+1]:
+					directions.append("up")
+				if [adjacent[0],adjacent[1]] == [room[0]-1,room[1]]:
+					directions.append("right")
+				if [adjacent[0],adjacent[1]] == [room[0],room[1]-1]:
+					directions.append("down")
+				if [adjacent[0],adjacent[1]] == [room[0]+1,room[1]]:
+					directions.append("left")
+		node.openDoors(directions)
 
 #HELPER FUNCTIONS
+func getAdjacent(x,z):
+	var adjacent = []
+	for room in hasRooms(x,z):
+		match room:
+			"up":
+				adjacent.append([x,z-1])
+			"right":
+				adjacent.append([x+1,z])
+			"down":
+				adjacent.append([x,z+1])
+			"left":
+				adjacent.append([x-1,z])
+	return adjacent
+
+
 func moveInDirection(current, direction):
 	if direction == "up":
 		return [current[0], current[1] - 1]
@@ -204,21 +252,6 @@ func chooseDirection(validDirs, verticalChance):
 		lastDirection = chosenDirection
 		moveHistory = 1
 	return chosenDirection
-
-func isSquare(current, direction):
-	var col = current[0]
-	var row = current[1]
-	
-	match direction:
-		"up":
-			return hasUp(col, row) and (hasLeft(col, row-1) or hasRight(col, row-1))
-		"down":
-			return hasDown(col, row) and (hasLeft(col, row+1) or hasRight(col, row+1))
-		"right":
-			return hasRight(col, row) and (hasUp(col+1, row) or hasDown(col+1, row))
-		"left":
-			return hasLeft(col, row) and (hasUp(col-1, row) or hasDown(col-1, row))
-	return false
 
 func hasRooms(column, row):
 	var roomDirs = []
