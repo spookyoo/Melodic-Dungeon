@@ -10,7 +10,6 @@ extends Node3D
 @onready var player = $Player
 
 @export var enemyScene : PackedScene
-var enemies : Array = []
 var remainingEnemies : int = 0
 
 var floors = []
@@ -200,8 +199,8 @@ func roomActivate(x,z):
 func spawnEnemies(x, z) -> Array:
 	var enemies = []
 	var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
-	var roomMin = Vector3(roomCenter.x - roomSize.x / 2, 0, roomCenter.z - roomSize.z / 2)
-	var roomMax = Vector3(roomCenter.x + roomSize.x / 2 - 10, 0, roomCenter.z + roomSize.z / 2 - 10)
+	var roomMin = Vector3(roomCenter.x - roomSize.x / 2 + 5, 0, roomCenter.z - roomSize.z / 2 + 5)
+	var roomMax = Vector3(roomCenter.x + roomSize.x / 2 - 5, 0, roomCenter.z + roomSize.z / 2 - 5)
 	var enemyCount = randf_range(3,5)
 	#var playerPos = get_node("Player").global_transform.origin
 	
@@ -214,7 +213,6 @@ func spawnEnemies(x, z) -> Array:
 			#1, 
 			#randf_range(roomMin.z, roomMax.z)
 		#)
-		
 		#if randomPosition.distance_to(playerPos) > 10:
 			#isValidPos = true
 		
