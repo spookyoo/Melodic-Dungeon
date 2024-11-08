@@ -175,7 +175,6 @@ func startRoom():
 func startRun():
 	completed.append(startNode[0])
 	completedDoors(completed[0][0],completed[0][1])
-	return
 
 func roomActivate(x,z):
 	if ([x,z] != startNode[0]) && !(completed.has([x,z])):
