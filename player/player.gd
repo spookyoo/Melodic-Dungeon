@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var raycast = $Head/Camera3D/RayCast3D
-#var lastCollided : Enemy = null
+var lastCollided : Enemy = null
 var playerHealth = 100
 var currentKeyIdx = 0
 
@@ -11,7 +11,7 @@ var currentKeyIdx = 0
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
-const SENSITIVITY = 0.001
+const SENSITIVITY = 0.005
 
 # Bob variables
 const BOB_FREQ = 2.0
@@ -25,7 +25,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") || event.is_action_pressed("exit"):
 		get_tree().quit()
 
 func _unhandled_input(event):
@@ -37,8 +37,8 @@ func _physics_process(delta: float) -> void:
 	applyMovement(delta)
 	applyCamEffects(delta)
 	move_and_slide()
-	#performRaycast()
-	#handleInput()
+	performRaycast()
+	handleInput()
 
 
 func handleCamera(event):
@@ -120,19 +120,19 @@ func calcHeadbob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 	
-#func performRaycast():
-	#if lastCollided:
-		#var lastLabel = lastCollided.get_node("Label")
-		#lastLabel.visible = false
-		#lastCollided = null
-	#if raycast.is_colliding():
-		#var collider = raycast.get_collider()
-		#
-		#if collider is Enemy:
-			#var enemyLabel = collider.get_node("Label")
-			#enemyLabel.visible = true
-				#
-			#lastCollided = collider
+func performRaycast():
+	if lastCollided:
+		var lastLabel = lastCollided.get_node("Label")
+		lastLabel.visible = false
+		lastCollided = null
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		
+		if collider is Enemy:
+			var enemyLabel = collider.get_node("Label")
+			enemyLabel.visible = true
+				
+			lastCollided = collider
 
 #func handleIput():
 	#"""
@@ -181,37 +181,37 @@ func calcHeadbob(time) -> Vector3:
 					#lastCollided.keyStack.clear() # clear stack if wrong key pressed
 					#break
 					
-#func handleInput():
-	#"""
-	#What will happen when we look at the LABEL (STACK VARIATION)
-	#"""
-	#if lastCollided && lastCollided.keyQueue.size() > 0:
-		##print("current key stackqueue: ", lastCollided.keyQueue)
-		#var expectedKey = lastCollided.keyQueue.front()     # GET THE LAST KEY FROM THE STACK
-		#
-		#if Input.is_action_just_pressed(expectedKey):
-			#print("CORRECT KEY PRESSED: ", expectedKey)
-			#lastCollided.keyQueue.pop_front() # remove first key from queue
-			##lastCollided.updateLabel()
-			#fixError()
-			#
-			## check if queue is empty`
-			#if lastCollided.keyQueue.size() == 0:
-				#print("All keys pressed! YAHOO!!")
-				#lastCollided.queue_free()
-				#lastCollided = null
-		#else:
-			## check wrong keys
-			#for key in lastCollided.keys.split(" "):
-				#if Input.is_action_just_pressed(key):
-					#print("Wrong key pressed: ", key)
-					##lastCollided.keyQueue.clear() # clear stack if wrong key pressed
-					#playerHealth -= 10
-					#print(playerHealth)
-					#break
+func handleInput():
+	"""
+	What will happen when we look at the LABEL (STACK VARIATION)
+	"""
+	if lastCollided && lastCollided.keyQueue.size() > 0:
+		#print("current key stackqueue: ", lastCollided.keyQueue)
+		var expectedKey = lastCollided.keyQueue.front()     # GET THE LAST KEY FROM THE STACK
+		
+		if Input.is_action_just_pressed(expectedKey):
+			print("CORRECT KEY PRESSED: ", expectedKey)
+			lastCollided.keyQueue.pop_front() # remove first key from queue
+			#lastCollided.updateLabel()
+			fixError()
+			
+			# check if queue is empty`
+			if lastCollided.keyQueue.size() == 0:
+				print("All keys pressed! YAHOO!!")
+				lastCollided.queue_free()
+				lastCollided = null
+		else:
+			# check wrong keys
+			for key in lastCollided.keys.split(" "):
+				if Input.is_action_just_pressed(key):
+					print("Wrong key pressed: ", key)
+					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
+					playerHealth -= 10
+					print(playerHealth)
+					break
 					
-#func fixError():
-	#lastCollided.label.text = " ".join(lastCollided.keyQueue)
+func fixError():
+	lastCollided.label.text = " ".join(lastCollided.keyQueue)
 	#label.text = " ".join(keyQueue)
 	#var completedKeys = lastCollided.keyQueue.slice(0, currentKeyIdx)
 	#var remainingKeys = lastCollided.keyQueue.slice(currentKeyIdx, lastCollided.keyQueue.size())

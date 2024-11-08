@@ -18,6 +18,7 @@ tonemap_mode = 2
 
 [node name="room" parent="." instance=ExtResource("1_ilsom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131421, 0, -0.40621)
+script = null
 
 [node name="Player" parent="." instance=ExtResource("2_jehi3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955884, 0)

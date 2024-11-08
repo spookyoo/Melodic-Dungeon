@@ -9,6 +9,10 @@ extends Node3D
 #@onready var camera = $Camera3D
 @onready var player = $Player
 
+@export var enemyScene : PackedScene
+var enemies : Array = []
+var remainingEnemies : int = 0
+
 var floors = []
 var mainBranch = []
 var endRoom = []
@@ -182,15 +186,61 @@ func roomActivate(x,z):
 		completed.append([x,z])
 		closeDoors(x,z)
 		
-		var enemies = spawnRoom()
-		while enemies.size() > 0:
-			pass
-		await get_tree().create_timer(3.0).timeout
+		var enemies = spawnEnemies(x, z)
+		remainingEnemies = enemies.size()
+		await isEnemiesDefeated(enemies)
+		
+		# While theres no more enemies do nothing???
+		#while enemies.size() > 0:
+			#pass
+			
+		#await get_tree().create_timer(3.0).timeout
 		completedDoors(x,z)
-
-func spawnRoom():
+	
+func spawnEnemies(x, z) -> Array:
 	var enemies = []
+	var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
+	var roomMin = Vector3(roomCenter.x - roomSize.x / 2, 0, roomCenter.z - roomSize.z / 2)
+	var roomMax = Vector3(roomCenter.x + roomSize.x / 2 - 10, 0, roomCenter.z + roomSize.z / 2 - 10)
+	var enemyCount = randf_range(3,5)
+	#var playerPos = get_node("Player").global_transform.origin
+	
+	for i in range(enemyCount):
+		#var randomPosition = Vector3.ZERO
+		#var isValidPos = false
+		#while not isValidPos:
+			#randomPosition = Vector3(
+			#randf_range(roomMin.x, roomMax.x),      # random x
+			#1, 
+			#randf_range(roomMin.z, roomMax.z)
+		#)
+		
+		#if randomPosition.distance_to(playerPos) > 10:
+			#isValidPos = true
+		
+		var randomPosition = Vector3(
+			randf_range(roomMin.x, roomMax.x),      # random x
+			1, 
+			randf_range(roomMin.z, roomMax.z)
+		)
+		
+		var enemyInstance = enemyScene.instantiate()
+		enemyInstance.global_transform.origin = randomPosition
+		
+		add_child(enemyInstance)
+		enemies.append(enemyInstance)
 	return enemies
+
+func isEnemiesDefeated(enemies : Array):
+	while remainingEnemies > 0:
+		await get_tree().create_timer(0.5).timeout
+		remainingEnemies = 0
+		for i in range(enemies.size()):
+			if !is_instance_valid(enemies[i]):
+				enemies.erase(i)
+			else:
+				remainingEnemies += 1
+	
 
 func closeDoors(x,z):
 	var target = rooms[[x,z]][0]

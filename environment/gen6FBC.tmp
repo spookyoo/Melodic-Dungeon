@@ -20,6 +20,10 @@ tonemap_mode = 2
 [node name="genTest" type="Node3D"]
 script = ExtResource("1_0vwcg")
 roomScene = ExtResource("2_2fer0")
+dungeonWidth = null
+dungeonHeight = null
+mainBranchLength = null
+roomSize = null
 enemyScene = ExtResource("3_4egpq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
