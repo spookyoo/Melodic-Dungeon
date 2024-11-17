@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc25vi7wiy0wt"]
+[gd_scene load_steps=7 format=3 uid="uid://dc25vi7wiy0wt"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jqcp1"]
+[ext_resource type="Script" path="res://player/notes/note_manager.gd" id="2_aveqo"]
+[ext_resource type="PackedScene" uid="uid://b2524asajwaim" path="res://player/notes/musicNote.tscn" id="3_yxhf0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43jit"]
 albedo_color = Color(0.278431, 0, 0.25098, 1)
@@ -29,3 +31,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0356946, 0.710164, -0.0099
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.034775, -0.186806, -0.330131)
 target_position = Vector3(0, -10, 0)
+
+[node name="Weapon" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(0.974956, 0, 0.222399, 0, 1, 0, -0.222399, 0, 0.974956, 0.260315, -0.0176006, -0.358681)
+
+[node name="NoteManager" type="Node3D" parent="."]
+script = ExtResource("2_aveqo")
+note = ExtResource("3_yxhf0")
