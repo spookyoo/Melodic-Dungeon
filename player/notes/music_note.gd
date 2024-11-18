@@ -8,7 +8,9 @@ var velocity = Vector3.ZERO
 var time = 0.0
 var sinHeight = 0.0
 var randomHeight = 0.0
+
 var randomNote
+var randomColour
 
 @onready var sprite = $Sprite
 
@@ -37,7 +39,10 @@ func chooseSprite():
 			sprite.texture = load("res://player/notes/assets/beam.png")
 		3:
 			sprite.texture = load("res://player/notes/assets/quaver.png")
-			
+	randomColour = randf()
+	randomColour = Color.from_hsv(randomColour, 1, 1)
+	sprite.modulate = randomColour
+	
 func lifeExpire(life):
 	await get_tree().create_timer(life).timeout
 	self.queue_free()
