@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://03grr676y4je"
-path.s3tc="res://.godot/imported/crochet.png-5f8ce7ebc8f3ae97332eba17a08c01a1.s3tc.ctex"
+uid="uid://wuuc24krb7br"
+path.s3tc="res://.godot/imported/wall_raised.png-f26966c434725fcb96017f32f7d61318.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/notes/assets/crochet.png"
-dest_files=["res://.godot/imported/crochet.png-5f8ce7ebc8f3ae97332eba17a08c01a1.s3tc.ctex"]
+source_file="res://environment/assets/textures/wall_raised.png"
+dest_files=["res://.godot/imported/wall_raised.png-f26966c434725fcb96017f32f7d61318.s3tc.ctex"]
 
 [params]
 

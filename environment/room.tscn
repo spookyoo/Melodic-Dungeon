@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck5gqfxvasybm"]
+[gd_scene load_steps=7 format=3 uid="uid://ck5gqfxvasybm"]
 
 [ext_resource type="Script" path="res://environment/room.gd" id="1_4i5x5"]
+[ext_resource type="PackedScene" uid="uid://kusf7wrf55dw" path="res://environment/assets/scenes/Torch.tscn" id="2_jngki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbo8i"]
+albedo_color = Color(0.470076, 0.470076, 0.470076, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cpkb"]
 albedo_color = Color(0.306923, 0.306923, 0.306923, 1)
@@ -17,6 +19,7 @@ size = Vector3(1, 0.2995, 1.01512)
 script = ExtResource("1_4i5x5")
 
 [node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000244617, 0.000540495, -0.000854492)
 use_collision = true
 size = Vector3(30, 0.1, 30)
 material = SubResource("StandardMaterial3D_nbo8i")
@@ -43,6 +46,12 @@ material = SubResource("StandardMaterial3D_1cpkb")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 4, 0)
 use_collision = true
 size = Vector3(30, 8, 0.5)
+material = SubResource("StandardMaterial3D_1cpkb")
+
+[node name="roof" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, 0)
+use_collision = true
+size = Vector3(30, 0.1, 30)
 material = SubResource("StandardMaterial3D_1cpkb")
 
 [node name="doorN" type="Node3D" parent="."]
@@ -146,5 +155,8 @@ material = SubResource("StandardMaterial3D_1cpkb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(26, 0, 0, 0, 26, 0, 0, 0, 26, 0, 3.96261, 0.196579)
 shape = SubResource("BoxShape3D_wmw6v")
+
+[node name="Torch" parent="." instance=ExtResource("2_jngki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17385, -14.5794)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_room_entered"]

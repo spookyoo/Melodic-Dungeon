@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://lu327svpqo8a"]
+
+[ext_resource type="PackedScene" uid="uid://cx3ihgyy02h7o" path="res://environment/assets/scenes/WallSeg.tscn" id="1_vrrr6"]
+[ext_resource type="PackedScene" uid="uid://c0rp1njw332tx" path="res://environment/assets/scenes/Arch.tscn" id="2_nwxkg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7oiwx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b66iy"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6p0j"]
+size = Vector3(13.1391, 8.48148, 0.790588)
+
+[node name="doorway" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="1" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.717, 0, 0)
+
+[node name="2" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.478, 0, 0)
+
+[node name="3" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.239, 0, 0)
+
+[node name="4" parent="." instance=ExtResource("2_nwxkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219276, 0)
+
+[node name="5" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.239, 0, 0)
+
+[node name="6" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.478, 0, 0)
+
+[node name="7" parent="." instance=ExtResource("1_vrrr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7167, 0.0522556, -0.00748825)
+
+[node name="L" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 8.4, 0, 0, 0, 0.289, 14.9164, 4.27127, -0.132185)
+mesh = SubResource("BoxMesh_7oiwx")
+material = SubResource("StandardMaterial3D_b66iy")
+
+[node name="R" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 8.4, 0, 0, 0, 0.289, -14.9136, 4.27127, -0.132185)
+mesh = SubResource("BoxMesh_7oiwx")
+material = SubResource("StandardMaterial3D_b66iy")
+
+[node name="CollisionShape3DL" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41789, 4.2389, -0.13327)
+shape = SubResource("BoxShape3D_g6p0j")
+
+[node name="CollisionShape3DR" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41793, 4.2389, -0.13327)
+shape = SubResource("BoxShape3D_g6p0j")

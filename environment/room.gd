@@ -17,70 +17,65 @@ func _ready():
 func drawDoors():
 	if doorN:
 		$wallN.visible = false
-		$wallN.use_collision = false
+		$wallN/CollisionShape3D.disabled = true
 		$doorN.visible = true
-		$doorN/doorL.use_collision = true
-		$doorN/doorR.use_collision = true
-		$doorN/doorM.use_collision = true
+		$doorN/CollisionShape3DL.disabled = false
+		$doorN/CollisionShape3DR.disabled = false
 	if doorE:
 		$wallE.visible = false
-		$wallE.use_collision = false
+		$wallE/CollisionShape3D.disabled = true
 		$doorE.visible = true
-		$doorE/doorL.use_collision = true
-		$doorE/doorR.use_collision = true
-		$doorE/doorM.use_collision = true
+		$doorE/CollisionShape3DL.disabled = false
+		$doorE/CollisionShape3DR.disabled = false
 	if doorS:
 		$wallS.visible = false
-		$wallS.use_collision = false
+		$wallS/CollisionShape3D.disabled = true
 		$doorS.visible = true
-		$doorS/doorL.use_collision = true
-		$doorS/doorR.use_collision = true
-		$doorS/doorM.use_collision = true
+		$doorS/CollisionShape3DL.disabled = false
+		$doorS/CollisionShape3DR.disabled = false
 	if doorW:
 		$wallW.visible = false
-		$wallW.use_collision = false
+		$wallW/CollisionShape3D.disabled = true
 		$doorW.visible = true
-		$doorW/doorL.use_collision = true
-		$doorW/doorR.use_collision = true
-		$doorW/doorM.use_collision = true
+		$doorW/CollisionShape3DL.disabled = false
+		$doorW/CollisionShape3DR.disabled = false
 
 func openDoors(directions):
 	for direction in directions:
 		match direction:
 			"up":
 				$doorN/door.visible = false
-				$doorN/door.use_collision = false
+				$doorN/door/CollisionShape3D.disabled = true
 			"right":
 				$doorE/door.visible = false
-				$doorE/door.use_collision = false
+				$doorE/door/CollisionShape3D.disabled = true
 			"down":
 				$doorS/door.visible = false
-				$doorS/door.use_collision = false
+				$doorS/door/CollisionShape3D.disabled = true
 			"left":
 				$doorW/door.visible = false
-				$doorW/door.use_collision = false
+				$doorW/door/CollisionShape3D.disabled = true
 
 func closeDoors(directions):
 	for direction in directions:
 		match direction:
 			"up":
 				$doorN/door.visible = true
-				$doorN/door.use_collision = true
+				$doorN/door/CollisionShape3D.disabled = false
 			"right":
 				$doorE/door.visible = true
-				$doorE/door.use_collision = true
+				$doorE/door/CollisionShape3D.disabled = false
 			"down":
 				$doorS/door.visible = true
-				$doorS/door.use_collision = true
+				$doorS/door/CollisionShape3D.disabled = false
 			"left":
 				$doorW/door.visible = true
-				$doorW/door.use_collision = true
+				$doorW/door/CollisionShape3D.disabled = false
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
 
 func _on_room_entered(area):
 	roomStart.emit(location[0],location[1])

@@ -70,10 +70,6 @@ func instantiateRoom(x,z):
 		endNode.append([x,z])
 		endNode.append(newRoom)
 		rooms[[x,z]] = [newRoom,3]
-		var objectMaterial = newRoom.get_node("floor").material.duplicate()
-		objectMaterial = objectMaterial as StandardMaterial3D
-		objectMaterial.albedo_color = Color(1,0,0)
-		newRoom.get_node("floor").material = objectMaterial
 	add_child(newRoom)
 
 func mainPath():

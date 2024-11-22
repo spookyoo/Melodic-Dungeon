@@ -1,0 +1,1367 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8s5gpc8tabm6"]
+
+[ext_resource type="ArrayMesh" uid="uid://brbn7vlu6604h" path="res://environment/assets/objects/tile_raised.obj" id="1_10fyp"]
+[ext_resource type="Texture2D" uid="uid://bo6ol7fa8esjy" path="res://environment/assets/textures/tile_raised.png" id="2_dwc2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oqjp"]
+albedo_texture = ExtResource("2_dwc2b")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr5wr"]
+
+[node name="floor" type="StaticBody3D"]
+
+[node name="tiles" type="Node3D" parent="."]
+
+[node name="1" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="2" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="3" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="4" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="5" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="6" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="7" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="8" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="9" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="10" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="11" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="12" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="13" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="14" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="15" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="16" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="17" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="18" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="19" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="20" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="21" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="22" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="23" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="24" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="25" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="26" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="27" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="28" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="29" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="30" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="31" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="32" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="33" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="34" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="35" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="36" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="37" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="38" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="39" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="40" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="41" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="42" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="43" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="44" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="45" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="46" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="47" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="48" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="49" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="50" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="51" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="52" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="53" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="54" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="55" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="56" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="57" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="58" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="59" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="60" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="61" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="62" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="63" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="64" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="65" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="66" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="67" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="68" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="69" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="70" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="71" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="72" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="73" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="74" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="75" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="76" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="77" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="78" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="79" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="80" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="81" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="82" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="83" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="84" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="85" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="86" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="87" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="88" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="89" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="90" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="91" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="92" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="93" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="94" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="95" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="96" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="97" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="98" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="99" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="100" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="101" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="102" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="103" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="104" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="105" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="106" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="107" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="108" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="109" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="110" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="111" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="112" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="113" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="114" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="115" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="116" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="117" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="118" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="119" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="120" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, 0)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="121" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="122" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="123" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="124" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="125" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="126" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="127" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="128" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="129" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="130" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="131" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="132" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="133" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="134" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="135" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -2)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="136" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="137" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="138" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="139" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="140" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="141" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="142" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="143" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="144" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="145" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="146" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="147" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="148" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="149" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="150" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -4)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="151" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="152" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="153" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="154" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="155" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="156" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="157" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="158" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="159" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="160" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="161" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="162" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="163" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="164" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="165" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -6)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="166" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="167" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="168" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="169" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="170" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="171" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="172" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="173" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="174" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="175" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="176" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="177" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="178" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="179" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="180" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -8)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="181" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="182" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="183" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="184" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="185" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="186" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="187" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="188" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="189" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="190" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="191" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="192" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="193" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="194" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="195" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -10)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="196" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="197" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="198" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="199" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="200" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="201" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="202" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="203" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="204" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="205" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="206" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="207" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="208" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="209" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="210" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -12)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="211" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 14, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="212" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 12, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="213" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 10, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="214" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 8, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="215" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 6, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="216" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 4, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="217" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 2, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="218" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, 0, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="219" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -2, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="220" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -4, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="221" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -6, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="222" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -8, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="223" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -10, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="224" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -12, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="225" type="MeshInstance3D" parent="tiles"]
+transform = Transform3D(1.255, 0, 0, 0, 0.25, 0, 0, 0, 1.255, -14, 0, -14)
+mesh = ExtResource("1_10fyp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oqjp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -0.40926, 0)
+shape = SubResource("BoxShape3D_pr5wr")

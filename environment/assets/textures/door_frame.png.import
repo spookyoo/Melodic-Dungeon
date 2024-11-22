@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://03grr676y4je"
-path.s3tc="res://.godot/imported/crochet.png-5f8ce7ebc8f3ae97332eba17a08c01a1.s3tc.ctex"
+uid="uid://bjq28sqsm3qhl"
+path.s3tc="res://.godot/imported/door_frame.png-15e8a6c4c575f3a132c84e3e79393ef4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/notes/assets/crochet.png"
-dest_files=["res://.godot/imported/crochet.png-5f8ce7ebc8f3ae97332eba17a08c01a1.s3tc.ctex"]
+source_file="res://environment/assets/textures/door_frame.png"
+dest_files=["res://.godot/imported/door_frame.png-15e8a6c4c575f3a132c84e3e79393ef4.s3tc.ctex"]
 
 [params]
 

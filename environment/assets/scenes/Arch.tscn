@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0rp1njw332tx"]
+
+[ext_resource type="ArrayMesh" uid="uid://btnao3c4iu4s3" path="res://environment/assets/objects/door_frame.obj" id="1_hwk31"]
+[ext_resource type="Texture2D" uid="uid://bjq28sqsm3qhl" path="res://environment/assets/textures/door_frame.png" id="2_o7wd6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5u8r"]
+albedo_texture = ExtResource("2_o7wd6")
+
+[node name="arch" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.65, 0, 0, 0, 2.65, 0, 0, 0, 2.65, 0, 0, 0)
+mesh = ExtResource("1_hwk31")
+surface_material_override/0 = SubResource("StandardMaterial3D_h5u8r")

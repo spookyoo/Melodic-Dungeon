@@ -1,32 +1,49 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4t03stnwiinv"]
 
-[ext_resource type="PackedScene" uid="uid://ck5gqfxvasybm" path="res://environment/room.tscn" id="1_ilsom"]
+[ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="1_e28kl"]
 [ext_resource type="PackedScene" uid="uid://dc25vi7wiy0wt" path="res://player/player.tscn" id="2_jehi3"]
 [ext_resource type="Texture2D" uid="uid://cw40x0iilalk4" path="res://player/shteve.webp" id="3_jost4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h1efp"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pbi20"]
 
-[sub_resource type="Sky" id="Sky_4xvkm"]
-sky_material = SubResource("ProceduralSkyMaterial_h1efp")
+[sub_resource type="Sky" id="Sky_dax8s"]
+sky_material = SubResource("ProceduralSkyMaterial_pbi20")
 
-[sub_resource type="Environment" id="Environment_t5co2"]
+[sub_resource type="Environment" id="Environment_hjl6y"]
 background_mode = 2
-sky = SubResource("Sky_4xvkm")
+background_color = Color(0.215686, 0.203922, 0.211765, 1)
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_dax8s")
 tonemap_mode = 2
+tonemap_exposure = 0.7
+tonemap_white = 1.2
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+glow_intensity = 0.4
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 0.0
+fog_enabled = true
+fog_light_energy = 0.1
+fog_density = 0.065
+volumetric_fog_enabled = true
 
 [node name="Test" type="Node3D"]
 
-[node name="room" parent="." instance=ExtResource("1_ilsom")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131421, 0, -0.40621)
-script = null
+[node name="room" parent="." instance=ExtResource("1_e28kl")]
 
 [node name="Player" parent="." instance=ExtResource("2_jehi3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955884, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_t5co2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1625.69, 873.5)
 scale = Vector2(0.62844, 0.62844)
 texture = ExtResource("3_jost4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0769453, 0.997035, 0, -0.997035, -0.0769453, 0, 11.0213, 0)
+visible = false
+light_energy = 15.515
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hjl6y")

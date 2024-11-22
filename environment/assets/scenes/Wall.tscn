@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://fbq1gq8ii7kr"]
+
+[ext_resource type="PackedScene" uid="uid://cx3ihgyy02h7o" path="res://environment/assets/scenes/WallSeg.tscn" id="1_qgnf7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yar3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fld3p"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mn6ri"]
+size = Vector3(29.9927, 8.48148, 0.790588)
+
+[node name="wall" type="StaticBody3D"]
+
+[node name="1" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.717, 0, 0)
+
+[node name="2" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.478, 0, 0)
+
+[node name="3" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.239, 0, 0)
+
+[node name="4" parent="." instance=ExtResource("1_qgnf7")]
+
+[node name="5" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.239, 0, 0)
+
+[node name="6" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.478, 0, 0)
+
+[node name="7" parent="." instance=ExtResource("1_qgnf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.717, 0, 0)
+
+[node name="L" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 8.4, 0, 0, 0, 0.289, 14.9164, 4.27127, -0.132185)
+mesh = SubResource("BoxMesh_yar3k")
+material = SubResource("StandardMaterial3D_fld3p")
+
+[node name="R" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 8.4, 0, 0, 0, 0.289, -14.9136, 4.27127, -0.132185)
+mesh = SubResource("BoxMesh_yar3k")
+material = SubResource("StandardMaterial3D_fld3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00894547, 4.2389, -0.13327)
+shape = SubResource("BoxShape3D_mn6ri")
