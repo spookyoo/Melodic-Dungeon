@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=9 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
 [ext_resource type="PackedScene" uid="uid://dnapim5r7j76g" path="res://Enemies/enemy.tscn" id="3_4egpq"]
 [ext_resource type="PackedScene" uid="uid://dc25vi7wiy0wt" path="res://player/player.tscn" id="3_40lm6"]
-[ext_resource type="Texture2D" uid="uid://cw40x0iilalk4" path="res://player/shteve.webp" id="4_pmucp"]
 [ext_resource type="Script" path="res://Enemies/AttackQueue.gd" id="6_lhtfu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1uyme"]
@@ -37,14 +36,20 @@ enemyScene = ExtResource("3_4egpq")
 [node name="Player" parent="." instance=ExtResource("3_40lm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 510.144, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1571.68, 874.5)
-scale = Vector2(0.640673, 0.640673)
-texture = ExtResource("4_pmucp")
-
 [node name="AttackQueue" type="Node3D" parent="."]
 visible = false
 script = ExtResource("6_lhtfu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yt0ju")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]

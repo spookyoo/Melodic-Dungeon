@@ -10,10 +10,6 @@ var doors = []
 
 signal roomStart #signal -> generation
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func drawDoors():
 	if doorN:
 		$wallN.visible = false
@@ -41,6 +37,7 @@ func drawDoors():
 		$doorW/CollisionShape3DR.disabled = false
 
 func openDoors(directions):
+	print("open")
 	for direction in directions:
 		match direction:
 			"up":
@@ -57,20 +54,25 @@ func openDoors(directions):
 				$doorW/door/CollisionShape3D.disabled = true
 
 func closeDoors(directions):
+	print(doors)
 	for direction in directions:
 		match direction:
 			"up":
 				$doorN/door.visible = true
 				$doorN/door/CollisionShape3D.disabled = false
+				print($doorN/door/CollisionShape3D.disabled)
 			"right":
 				$doorE/door.visible = true
 				$doorE/door/CollisionShape3D.disabled = false
+				print($doorE/door/CollisionShape3D.disabled)
 			"down":
 				$doorS/door.visible = true
 				$doorS/door/CollisionShape3D.disabled = false
+				print($doorS/door/CollisionShape3D.disabled)
 			"left":
 				$doorW/door.visible = true
 				$doorW/door/CollisionShape3D.disabled = false
+				print($doorW/door/CollisionShape3D.disabled)
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

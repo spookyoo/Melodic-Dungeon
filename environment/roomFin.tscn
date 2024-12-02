@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="wallE" parent="." instance=ExtResource("2_i502u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, 0)
+visible = false
 
 [node name="wallS" parent="." instance=ExtResource("2_i502u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
@@ -42,7 +43,6 @@ visible = false
 
 [node name="doorE" parent="." instance=ExtResource("3_1k1tg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, 0)
-visible = false
 
 [node name="door" parent="doorE" instance=ExtResource("3_vg5o6")]
 
@@ -65,5 +65,11 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(26, 0, 0, 0, 26, 0, 0, 0, 26, 0, 3.96261, 0.196579)
 shape = SubResource("BoxShape3D_wmw6v")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.04686, 0)
+light_energy = 0.15
+omni_range = 15.0
+omni_attenuation = 0.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_room_entered"]

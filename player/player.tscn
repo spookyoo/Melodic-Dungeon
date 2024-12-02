@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc25vi7wiy0wt"]
+[gd_scene load_steps=8 format=3 uid="uid://dc25vi7wiy0wt"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jqcp1"]
 [ext_resource type="Script" path="res://player/notes/note_manager.gd" id="2_aveqo"]
+[ext_resource type="Texture2D" uid="uid://b02bijfsmq8pt" path="res://player/lute.png" id="2_p05fq"]
 [ext_resource type="PackedScene" uid="uid://b2524asajwaim" path="res://player/notes/musicNote.tscn" id="3_yxhf0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43jit"]
@@ -36,6 +37,15 @@ target_position = Vector3(0, -10, 0)
 
 [node name="Weapon" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(0.974956, 0, 0.222399, 0, 1, 0, -0.222399, 0, 0.974956, 0.260315, -0.0176006, -0.358681)
+
+[node name="Instrument" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(0.974956, 0, 0.222399, 0, 1, 0, -0.222399, 0, 0.974956, 0.260315, -0.0176006, -0.358681)
+
+[node name="Sprite3D" type="Sprite3D" parent="Head/Camera3D/Instrument"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.330081, -0.234546, -0.0942572)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_p05fq")
 
 [node name="NoteManager" type="Node3D" parent="."]
 script = ExtResource("2_aveqo")
