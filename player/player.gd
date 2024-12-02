@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var raycast = $Head/Camera3D/RayCast3D
+@onready var notes = $NoteManager
+@onready var mark = $Head/Camera3D/Weapon
 var lastCollided : Enemy = null
 var playerHealth = 100
 var currentKeyIdx = 0
@@ -11,7 +13,7 @@ var currentKeyIdx = 0
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
-const SENSITIVITY = 0.005
+const SENSITIVITY = 0.001
 
 # Bob variables
 const BOB_FREQ = 2.0
@@ -190,24 +192,27 @@ func handleInput():
 		var expectedKey = lastCollided.keyQueue.front()     # GET THE LAST KEY FROM THE STACK
 		
 		if Input.is_action_just_pressed(expectedKey):
-			print("CORRECT KEY PRESSED: ", expectedKey)
+			notes
+			#print("CORRECT KEY PRESSED: ", expectedKey)
 			lastCollided.keyQueue.pop_front() # remove first key from queue
 			#lastCollided.updateLabel()
 			fixError()
+			notes.correct(mark,lastCollided)
 			
 			# check if queue is empty`
 			if lastCollided.keyQueue.size() == 0:
-				print("All keys pressed! YAHOO!!")
+				#print("All keys pressed! YAHOO!!")
 				lastCollided.queue_free()
 				lastCollided = null
 		else:
 			# check wrong keys
 			for key in lastCollided.keys.split(" "):
 				if Input.is_action_just_pressed(key):
-					print("Wrong key pressed: ", key)
+					#print("Wrong key pressed: ", key)
 					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
 					playerHealth -= 10
 					print(playerHealth)
+					notes.incorrect()
 					break
 					
 func fixError():
