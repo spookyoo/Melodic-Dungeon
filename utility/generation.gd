@@ -201,17 +201,6 @@ func spawnEnemies(x, z) -> Array:
 	#var playerPos = get_node("Player").global_transform.origin
 	
 	for i in range(enemyCount):
-		#var randomPosition = Vector3.ZERO
-		#var isValidPos = false
-		#while not isValidPos:
-			#randomPosition = Vector3(
-			#randf_range(roomMin.x, roomMax.x),      # random x
-			#1, 
-			#randf_range(roomMin.z, roomMax.z)
-		#)
-		#if randomPosition.distance_to(playerPos) > 10:
-			#isValidPos = true
-		
 		var randomPosition = Vector3(
 			randf_range(roomMin.x, roomMax.x),      # random x
 			1, 

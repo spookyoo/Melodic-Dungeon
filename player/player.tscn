@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://player/notes/note_manager.gd" id="2_aveqo"]
 [ext_resource type="Texture2D" uid="uid://b02bijfsmq8pt" path="res://player/lute.png" id="2_p05fq"]
 [ext_resource type="PackedScene" uid="uid://b2524asajwaim" path="res://player/notes/musicNote.tscn" id="3_yxhf0"]
+[ext_resource type="Script" path="res://player/timing_circle.gd" id="4_3xssq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43jit"]
 albedo_color = Color(0.278431, 0, 0.25098, 1)
@@ -50,3 +51,6 @@ texture = ExtResource("2_p05fq")
 [node name="NoteManager" type="Node3D" parent="."]
 script = ExtResource("2_aveqo")
 note = ExtResource("3_yxhf0")
+
+[node name="TimingCircle" type="Node2D" parent="."]
+script = ExtResource("4_3xssq")
