@@ -15,7 +15,7 @@ func reqAttack(enemy: Enemy) -> bool:
 func finishAttack(enemy: Enemy):
 	if activeEnemy == enemy:
 		if queue.size() > 0:
-			activeEnemy = queue.pop_front() # next enemy should be active
+			activeEnemy = queue.pop_front() # next enemy shAould be active
 			activeEnemy.startAttack()
 		else:
 			activeEnemy = null

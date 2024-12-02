@@ -197,7 +197,7 @@ func spawnEnemies(x, z) -> Array:
 	var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
 	var roomMin = Vector3(roomCenter.x - roomSize.x / 2 + 5, 0, roomCenter.z - roomSize.z / 2 + 5)
 	var roomMax = Vector3(roomCenter.x + roomSize.x / 2 - 5, 0, roomCenter.z + roomSize.z / 2 - 5)
-	var enemyCount = randf_range(3,5)
+	var enemyCount = randi_range(3,5)
 	#var playerPos = get_node("Player").global_transform.origin
 	
 	for i in range(enemyCount):
@@ -208,9 +208,11 @@ func spawnEnemies(x, z) -> Array:
 		)
 		
 		var enemyInstance = enemyScene.instantiate()
-		enemyInstance.global_transform.origin = randomPosition
-		
 		add_child(enemyInstance)
+		enemyInstance.call_deferred("set", "global_position", randomPosition)
+		#enemyInstance.global_position = randomPosition
+		#add_child(enemyInstance)
+		#call_deferred("add_child", enemyInstance)
 		enemies.append(enemyInstance)
 	return enemies
 
