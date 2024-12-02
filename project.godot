@@ -89,6 +89,10 @@ exit={
 ]
 }
 
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
