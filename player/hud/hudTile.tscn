@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cerhmeifo2c0b"]
+
+[node name="border" type="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 40)
+color = Color(0.212553, 0.108321, 0.365584, 1)
+
+[node name="inner" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 37.0
+color = Color(0.746679, 0.364947, 0.682524, 1)

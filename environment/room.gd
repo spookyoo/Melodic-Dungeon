@@ -37,7 +37,6 @@ func drawDoors():
 		$doorW/CollisionShape3DR.disabled = false
 
 func openDoors(directions):
-	print("open")
 	for direction in directions:
 		match direction:
 			"up":
@@ -54,25 +53,20 @@ func openDoors(directions):
 				$doorW/door/CollisionShape3D.disabled = true
 
 func closeDoors(directions):
-	print(doors)
 	for direction in directions:
 		match direction:
 			"up":
 				$doorN/door.visible = true
-				$doorN/door/CollisionShape3D.disabled = false
-				print($doorN/door/CollisionShape3D.disabled)
+				$doorN/door/CollisionShape3D.call_deferred("set","disabled", false)
 			"right":
 				$doorE/door.visible = true
-				$doorE/door/CollisionShape3D.disabled = false
-				print($doorE/door/CollisionShape3D.disabled)
+				$doorE/door/CollisionShape3D.call_deferred("set","disabled", false)
 			"down":
 				$doorS/door.visible = true
-				$doorS/door/CollisionShape3D.disabled = false
-				print($doorS/door/CollisionShape3D.disabled)
+				$doorS/door/CollisionShape3D.call_deferred("set","disabled", false)
 			"left":
 				$doorW/door.visible = true
-				$doorW/door/CollisionShape3D.disabled = false
-				print($doorW/door/CollisionShape3D.disabled)
+				$doorW/door/CollisionShape3D.call_deferred("set","disabled", false)
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
