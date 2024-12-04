@@ -57,10 +57,15 @@ func startAttack():
 	# we could play animations here later
 
 func finishAttack():
+	if not is_instance_valid(self):
+		return
 	isAttacking = false
-	attackQueue.finishAttack(self)
+	if is_instance_valid(attackQueue):
+		attackQueue.finishAttack(self)
 	
 func moveTowardsPlayer(delta):
+	if not is_instance_valid(self) or not is_instance_valid(player):
+		return
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction * speed
 	move_and_slide()

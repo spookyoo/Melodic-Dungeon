@@ -145,53 +145,6 @@ func performRaycast():
 			enemyLabel.visible = true
 				
 			lastCollided = collider
-
-#func handleIput():
-	#"""
-	#What will happen when we look at the LABEL
-	#"""
-	#var correctKey = false
-	#
-	#if lastCollided:
-		#var keys = lastCollided.keys.split(", ")
-		#
-		#for key in keys:
-			#if Input.is_action_just_pressed(key): # CHECK FOR SPECIFIC KEY INPUT
-				#print("correct key pressed: ", key)
-				#lastCollided.queue_free()
-				#lastCollided = null
-				#correctKey = true
-				#break
-		#if not correctKey:
-			#for key in keys:
-				#if Input.is_action_just_pressed(key):
-					#print("Wrong key pressed: ", key)
-					## add smth later here
-					
-#func handleInput():
-	#"""
-	#What will happen when we look at the LABEL (STACK VARIATION)
-	#"""
-	#if lastCollided && lastCollided.keyStack.size() > 0:
-		#print("current key stack: ", lastCollided.keyStack)
-		#var expectedKey = lastCollided.keyStack.back()     # GET THE LAST KEY FROM THE STACK
-		#
-		#if Input.is_action_just_pressed(expectedKey):
-			#print("CORRECT KEY PRESSED: ", expectedKey)
-			#lastCollided.keyStack.pop_back() # remove last key from stack
-			#
-			## check if stack is empty`
-			#if lastCollided.keyStack.size() == 0:
-				#print("All keys pressed! YAHOO!!")
-				#lastCollided.queue_free()
-				#lastCollided = null
-		#else:
-			## check wrong keys
-			#for key in lastCollided.keys.split(" "):
-				#if Input.is_action_just_pressed(key):
-					#print("Wrong key pressed: ", key)
-					#lastCollided.keyStack.clear() # clear stack if wrong key pressed
-					#break
 					
 func handleInput():
 	"""
