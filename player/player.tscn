@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jqcp1"]
 [ext_resource type="Script" path="res://player/notes/note_manager.gd" id="2_aveqo"]
-[ext_resource type="Texture2D" uid="uid://b02bijfsmq8pt" path="res://player/lute.png" id="2_p05fq"]
+[ext_resource type="Texture2D" uid="uid://b02bijfsmq8pt" path="res://player/assets/lute.png" id="2_p05fq"]
 [ext_resource type="PackedScene" uid="uid://b2524asajwaim" path="res://player/notes/musicNote.tscn" id="3_yxhf0"]
 [ext_resource type="Script" path="res://player/timing_circle.gd" id="4_3xssq"]
 

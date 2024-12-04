@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwjbak6rmyb5"
-path.s3tc="res://.godot/imported/recorder.png-14ed68faf6ca7fca5b1628ca92b1c554.s3tc.ctex"
+path.s3tc="res://.godot/imported/recorder.png-a76e42af6a8cf0e85202581502d77aec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/recorder.png"
-dest_files=["res://.godot/imported/recorder.png-14ed68faf6ca7fca5b1628ca92b1c554.s3tc.ctex"]
+source_file="res://player/assets/recorder.png"
+dest_files=["res://.godot/imported/recorder.png-a76e42af6a8cf0e85202581502d77aec.s3tc.ctex"]
 
 [params]
 

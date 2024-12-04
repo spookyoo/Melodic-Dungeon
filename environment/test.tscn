@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="1_e28kl"]
 [ext_resource type="PackedScene" uid="uid://dc25vi7wiy0wt" path="res://player/player.tscn" id="2_jehi3"]
-[ext_resource type="Texture2D" uid="uid://cw40x0iilalk4" path="res://player/shteve.webp" id="3_jost4"]
+[ext_resource type="Texture2D" uid="uid://cw40x0iilalk4" path="res://player/assets/shteve.webp" id="3_jost4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pbi20"]
 

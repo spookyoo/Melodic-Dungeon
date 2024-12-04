@@ -8,8 +8,8 @@ var secs : int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
-	hour = fmod(time, 3600) / 24
-	mins = fmod(time, 60) / 60
+	hour = fmod(time, 216000) / 3600
+	mins = fmod(time, 3600) / 60
 	secs = fmod(time, 60)
 	
 	$hour.text = "%02d:" % hour
