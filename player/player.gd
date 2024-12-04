@@ -9,19 +9,29 @@ var lastCollided : Enemy = null
 var playerHealth = 100
 var currentKeyIdx = 0
 
-
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.001
-
 # Bob variables
 const BOB_FREQ = 2.0
 const BOB_AMP= 0.08
-
 # FOV Variables
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+# Combo Variables
+var currentWeapon = "lute"
+var comboStreak = 0
+var perfectComboActivated = false 
+
+var weapons = {
+	"lute": {
+		"comboThreshhold": 7,
+		"passive": func(): pass,
+		"active": func(): pass	
+	}
+}
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -196,16 +206,23 @@ func handleInput():
 			#print("CORRECT KEY PRESSED: ", expectedKey)
 			lastCollided.keyQueue.pop_front() # remove first key from queue
 			#lastCollided.updateLabel()
-			fixError()
+			updateKeyLabel()
 			notes.correct(mark,lastCollided)
 			
-			# check if queue is empty`
+			comboStreak += 1
+			
+			var currentWeaponData = weapons[currentWeapon]
+			if comboStreak >= currentWeaponData["comboThreshold"] && not perfectComboActivated:
+				activatePerfectCombo()
+			
+			# check if queue is empty (handles killing enemies)
 			if lastCollided.keyQueue.size() == 0:
-				#print("All keys pressed! YAHOO!!")
 				lastCollided.queue_free()
 				lastCollided = null
 		else:
 			# check wrong keys
+			resetCombo()
+			
 			for key in lastCollided.keys.split(" "):
 				if Input.is_action_just_pressed(key):
 					#print("Wrong key pressed: ", key)
@@ -215,9 +232,23 @@ func handleInput():
 					notes.incorrect()
 					break
 					
-func fixError():
+func updateKeyLabel():
 	lastCollided.label.text = " ".join(lastCollided.keyQueue)
 	#label.text = " ".join(keyQueue)
 	#var completedKeys = lastCollided.keyQueue.slice(0, currentKeyIdx)
 	#var remainingKeys = lastCollided.keyQueue.slice(currentKeyIdx, lastCollided.keyQueue.size())
+
+func activatePerfectCombo():
+	perfectComboActivated = true
 	
+	# activate the current weapon's active ability
+	var currentWeaponData = weapons[currentWeapon]
+	if currentWeaponData && currentWeaponData["active"]:
+		currentWeaponData["active"].call()
+		
+		print("perfect combo activated with", currentWeapon)
+		
+func resetCombo():
+	comboStreak = 0
+	comboFirstEnemyContact = false
+	perfectComboActivated = false
