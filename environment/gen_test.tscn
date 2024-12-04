@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=16 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://player/hud/mapHud.gd" id="6_1tvm3"]
 [ext_resource type="Script" path="res://Enemies/AttackQueue.gd" id="6_lhtfu"]
 [ext_resource type="PackedScene" uid="uid://cerhmeifo2c0b" path="res://player/hud/hudTile.tscn" id="7_ucryf"]
+[ext_resource type="FontFile" uid="uid://53ylwf3wf42u" path="res://player/hud/pixel.ttf" id="8_w6vw3"]
+[ext_resource type="Script" path="res://player/hud/timer.gd" id="9_mqst4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1uyme"]
 
@@ -31,6 +33,10 @@ fog_density = 0.065
 volumetric_fog_enabled = true
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_o4kaw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wo2ry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ah1k6"]
 
 [node name="genTest" type="Node3D"]
 script = ExtResource("1_0vwcg")
@@ -60,11 +66,11 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Control" type="Control" parent="HUD/Container"]
+[node name="Map" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUD/Container/Control"]
+[node name="Back" type="TextureRect" parent="HUD/Container/Map"]
 modulate = Color(0.176419, 0.176419, 0.176419, 1)
 z_index = 1
 layout_mode = 1
@@ -76,7 +82,7 @@ offset_bottom = 200.0
 grow_horizontal = 0
 texture = SubResource("CanvasTexture_o4kaw")
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/Container/Control"]
+[node name="Border" type="TextureRect" parent="HUD/Container/Map"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -89,7 +95,7 @@ offset_bottom = 203.0
 grow_horizontal = 0
 texture = SubResource("CanvasTexture_o4kaw")
 
-[node name="Map" type="GridContainer" parent="HUD/Container/Control"]
+[node name="Map" type="GridContainer" parent="HUD/Container/Map"]
 unique_name_in_owner = true
 z_index = 2
 custom_minimum_size = Vector2(200, 200)
@@ -105,3 +111,122 @@ theme_override_constants/v_separation = 0
 columns = 5
 script = ExtResource("6_1tvm3")
 gridTile = ExtResource("7_ucryf")
+
+[node name="Score" type="Control" parent="HUD/Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="HUD/Container/Score"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 28
+text = "00000000"
+
+[node name="Health" type="Control" parent="HUD/Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="HUD/Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Border" type="TextureRect" parent="HUD/Container/Inventory"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -106.0
+offset_right = 56.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CanvasTexture_wo2ry")
+
+[node name="Back" type="TextureRect" parent="HUD/Container/Inventory"]
+self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CanvasTexture_wo2ry")
+
+[node name="Instrument" type="Sprite2D" parent="HUD/Container/Inventory/Back"]
+z_index = 2
+position = Vector2(50.25, 49.75)
+scale = Vector2(3.10937, 3.10937)
+
+[node name="Control" type="Control" parent="HUD/Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="HUD/Container/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_right = 61.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ah1k6")
+script = ExtResource("9_mqst4")
+
+[node name="hour" type="Label" parent="HUD/Container/Control/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_right = -17.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 28
+text = "00:"
+horizontal_alignment = 2
+
+[node name="min" type="Label" parent="HUD/Container/Control/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.5
+offset_right = 22.5
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 28
+text = "00:"
+horizontal_alignment = 2
+
+[node name="sec" type="Label" parent="HUD/Container/Control/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 22.0
+offset_right = 56.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 28
+text = "00
+"
+horizontal_alignment = 2
