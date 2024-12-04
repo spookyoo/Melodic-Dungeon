@@ -29,7 +29,7 @@ var weapons = {
 	"lute": {
 		"comboThreshold": 7,
 		"passive": func(): pass,
-		"active": func(): pass	
+		"active": func(): pass
 	}
 }
 
