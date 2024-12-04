@@ -181,10 +181,23 @@ func roomActivate(x,z):
 		completed.append([x,z])
 		closeDoors(x,z)
 		
-		var enemies = spawnEnemies(x, z)
-		remainingEnemies = enemies.size()
-		await isEnemiesDefeated(enemies)
-		
+		if [x, z] == endNode[0]:
+			# boss room spawning
+			var bossScene = preload("res://bosses/RandomizerBoss.tscn")
+			var bossInstance = bossScene.instantiate()
+			
+			# put boss in the center
+			var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
+			bossInstance.global_position = roomCenter
+			
+			add_child(bossInstance)
+			remainingEnemies = 1    # track boss as the last enemy
+			await isEnemiesDefeated([bossInstance])
+		else:
+			var enemies = spawnEnemies(x, z)
+			remainingEnemies = enemies.size()
+			await isEnemiesDefeated(enemies)
+
 		# While theres no more enemies do nothing???
 		#while enemies.size() > 0:
 			#pass
