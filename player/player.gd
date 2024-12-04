@@ -23,15 +23,15 @@ const FOV_CHANGE = 1.5
 var currentWeapon = "lute"
 var comboStreak = 0
 var perfectComboActivated = false 
+var comboFirstEnemyContact = false
 
 var weapons = {
 	"lute": {
-		"comboThreshhold": 7,
+		"comboThreshold": 7,
 		"passive": func(): pass,
 		"active": func(): pass	
 	}
 }
-
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -210,6 +210,7 @@ func handleInput():
 			notes.correct(mark,lastCollided)
 			
 			comboStreak += 1
+			print("Combo Streak:", comboStreak)
 			
 			var currentWeaponData = weapons[currentWeapon]
 			if comboStreak >= currentWeaponData["comboThreshold"] && not perfectComboActivated:
