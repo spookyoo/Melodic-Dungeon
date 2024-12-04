@@ -9,7 +9,7 @@ var lastCollided : Enemy = null
 var playerHealth = 100
 var currentKeyIdx = 0
 
-const WALK_SPEED = 5.0
+var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.001
@@ -35,6 +35,7 @@ var weapons = {
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GlobalInstruments.player = self
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel") || event.is_action_pressed("exit"):
@@ -92,7 +93,7 @@ func applyMovement(delta):
 	Args:
 		delta (float): Time elapsed since last frame (seconds)
 	"""
-	var speed = WALK_SPEED
+	var speed = walk_speed
 	
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED

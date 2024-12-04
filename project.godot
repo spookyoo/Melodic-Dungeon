@@ -14,6 +14,11 @@ config/name="a3_proto"
 run/main_scene="res://environment/gen_test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[autoload]
+
+GlobalPlayer="*res://player/globalPlayer.gd"
+GlobalInstruments="*res://player/globalInstruments.gd"
+
 [display]
 
 window/size/mode=2
