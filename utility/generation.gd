@@ -8,6 +8,7 @@ extends Node3D
 
 #@onready var camera = $Camera3D
 @onready var player = $Player
+@onready var mapHud = %Map
 
 @export var enemyScene : PackedScene
 var remainingEnemies : int = 0
@@ -25,11 +26,11 @@ var endNode = []
 var completed = []
 
 func _ready():
-	print("---------------------")
 	generateDungeon()
 	#for floor in floors:
 		#print(floor)
 	startRun()
+	#print(mapHud.dungeon)
 
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
@@ -174,8 +175,12 @@ func startRoom():
 func startRun():
 	completed.append(startNode[0])
 	completedDoors(completed[0][0],completed[0][1])
+	mapHud.dungeon = floors
 
 func roomActivate(x,z):
+	mapHud.completed = completed
+	mapHud.updateMap(x,z)
+	#print(str(x) + " " + str(z))
 	if ([x,z] != startNode[0]) && !(completed.has([x,z])):
 		var target = rooms[[x,z]][0]
 		completed.append([x,z])
@@ -184,7 +189,6 @@ func roomActivate(x,z):
 		var enemies = spawnEnemies(x, z)
 		remainingEnemies = enemies.size()
 		await isEnemiesDefeated(enemies)
-		
 		# While theres no more enemies do nothing???
 		#while enemies.size() > 0:
 			#pass
