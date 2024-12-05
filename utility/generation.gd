@@ -199,17 +199,11 @@ func roomActivate(x,z):
 			remainingEnemies = 1    # track boss as the last enemy
 			await isEnemiesDefeated([bossInstance])
 		else:
-			var randomMonsterType = randi() % 3
+			var randomMonsterType = randi() % 2
+			#var randomMonsterType = 3
 			var enemies = spawnEnemies(x, z, randomMonsterType)
 			remainingEnemies = enemies.size()
 			await isEnemiesDefeated(enemies)
-			
-
-		# While theres no more enemies do nothing???
-		#while enemies.size() > 0:
-			#pass
-			
-		#await get_tree().create_timer(3.0).timeout
 		completedDoors(x,z)
 	
 func spawnEnemies(x, z, monsterType) -> Array:
@@ -227,13 +221,23 @@ func spawnEnemies(x, z, monsterType) -> Array:
 			randf_range(roomMin.z, roomMax.z)
 		)
 		
-		var enemyInstance = enemyScene.instantiate()
-		add_child(enemyInstance)
-		enemyInstance.call_deferred("set", "global_position", randomPosition)
-		#enemyInstance.global_position = randomPosition
-		#add_child(enemyInstance)
-		#call_deferred("add_child", enemyInstance)
-		enemies.append(enemyInstance)
+		#var enemyInstance = enemyScene.instantiate()
+		var enemyInstance = null
+		match monsterType:
+			0: # Ogres
+				enemyInstance = preload("res://Enemies/MonsterType/Ogre.tscn").instantiate()
+			1: # Goblin
+				enemyInstance = preload("res://Enemies/MonsterType/Goblin.tscn").instantiate()
+			#2: # Assortment of both
+				#if randi() % 2 == 0:
+					#enemyInstance = preload("res://Enemies/MonsterType/Ogre.tscn").instantiate()
+				#else:
+					#enemyInstance = preload("res://Enemies/MonsterType/Goblin.tscn").instantiate()
+		
+		if enemyInstance:
+			add_child(enemyInstance)
+			enemyInstance.call_deferred("set", "global_position", randomPosition)
+			enemies.append(enemyInstance)
 	return enemies
 
 func isEnemiesDefeated(enemies : Array):
