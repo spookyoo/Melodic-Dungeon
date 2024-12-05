@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bja40r5npqukm"]
+[gd_scene load_steps=6 format=3 uid="uid://bja40r5npqukm"]
 
 [ext_resource type="Script" path="res://bosses/randomizer_boss.gd" id="1_f6fsy"]
+[ext_resource type="Texture2D" uid="uid://cu675oo5pwklx" path="res://bosses/wizard.png" id="2_4j6i0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yutd"]
 albedo_color = Color(0.223939, 0.142966, 0.659981, 1)
@@ -18,19 +19,30 @@ script = ExtResource("1_f6fsy")
 randomizeTimer = NodePath("RandomizeTimer")
 
 [node name="Label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01082, 0)
 visible = false
 billboard = 1
 text = "BEAN #1"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_mr8rj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_pf6ys")
 
 [node name="RandomizeTimer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 3.5
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.770223, 0)
+billboard = 2
+double_sided = false
+texture_filter = 0
+texture = ExtResource("2_4j6i0")
 
 [connection signal="timeout" from="RandomizeTimer" to="." method="_on_randomize_timer_timeout"]
