@@ -3,8 +3,9 @@ class_name Ogre
 
 # Ogres have High HP but are super slow
 func _ready():
-	health = 12
-	speed = 8
+	minHealth = 6
+	maxHealth = 10
+	speed = 12
 	super._ready()
 	
 	#print("Ogre keys: " + keys)

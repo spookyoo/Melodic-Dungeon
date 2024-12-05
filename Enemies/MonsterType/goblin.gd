@@ -3,7 +3,8 @@ class_name Goblin
 
 # Goblins have low HP but are super fast
 func _ready():
-	health = 6
+	minHealth = 2
+	maxHealth = 6
 	speed = 15
 	super._ready()
 	

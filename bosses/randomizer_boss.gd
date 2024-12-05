@@ -1,7 +1,7 @@
 extends Enemy
 class_name Boss
 
-var maxHealth = 35
+var health = 35
 @export var randomizeTimer: Timer
 
 var isVulnerable: bool = true
@@ -9,8 +9,7 @@ var isRandomizing: bool = false
 
 func _ready():
 	super()
-	health = maxHealth
-	keys = genRandomkeys(maxHealth)
+	keys = genRandomkeys(health)
 	keyQueue = keys.split(" ")
 	label.text = str(keys)     # ensures the intial keystrokes are displayed
 	randomizeTimer.start()

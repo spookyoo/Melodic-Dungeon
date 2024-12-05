@@ -56,7 +56,6 @@ note = ExtResource("3_yxhf0")
 script = ExtResource("4_3xssq")
 
 [node name="SpeedBoost" type="Timer" parent="."]
-wait_time = 1.2
-one_shot = true
+wait_time = 3.0
 
 [connection signal="timeout" from="SpeedBoost" to="." method="_on_speed_boost_timeout"]
