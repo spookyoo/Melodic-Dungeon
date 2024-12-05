@@ -37,7 +37,7 @@ var infusionSpeedBoost = 4
 var healingAmount = 18
 var invicible = false
 # Music
-var currKeyIdx = 0
+var currentNoteIdx = 0
 var ascending = true
 var correctSounds = []
 
@@ -280,6 +280,28 @@ func applyInstrument():
 			%Sprite3D.texture = null
 			correctSounds = []
 	audioManager.get_node("Incorrect").stream = load(correctSounds[-1])
+
+func playCorrect():
+	audioManager.get_node("Correct").stream = load(correctSounds[currentNoteIdx])
+	audioManager.get_node("Correct").play()
+	await get_tree().create_timer(1.0).timeout
+	audioManager.get_node("Correct").stop
+	
+	if ascending:
+		currentNoteIdx += 1
+		if currentNoteIdx >= 8:
+			ascending = false
+			currentNoteIdx = 7
+	else:
+		currentNoteIdx -= 1
+		if currentNoteIdx < 0:
+			ascending = true
+			currentNoteIdx = 1
+
+func playIncorrect():
+	audioManager.get_node("Incorrect").play()
+	await get_tree().create_timer(1.0).timeout
+	audioManager.get_node("Incorrect").stop
 
 func activateInfusion():
 	match GlobalPlayer.instrument:
