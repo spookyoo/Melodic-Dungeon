@@ -236,7 +236,6 @@ func takeDamage(amount: int):
 func die():
 	velocity = Vector3.ZERO
 	set_process(false)
-	print("playerDie")
 	
 func activatePerfectCombo():
 	perfectComboActivated = true

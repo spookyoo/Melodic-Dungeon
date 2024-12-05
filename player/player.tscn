@@ -28,13 +28,14 @@ script = ExtResource("2_q676q")
 
 [node name="WalkingSound" type="AudioStreamPlayer3D" parent="AudioManager"]
 stream = ExtResource("2_vdtyl")
-volume_db = -35.0
+volume_db = -40.0
 
 [node name="bgMusic" type="AudioStreamPlayer3D" parent="AudioManager"]
 stream = ExtResource("4_27j0m")
 volume_db = -50.0
 
 [node name="Correct" type="AudioStreamPlayer3D" parent="AudioManager"]
+volume_db = -30.0
 
 [node name="Incorrect" type="AudioStreamPlayer3D" parent="AudioManager"]
 
