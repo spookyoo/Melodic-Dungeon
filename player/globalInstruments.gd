@@ -3,7 +3,7 @@ extends Node
 const INSTRUMENT_PATH = "res://player/assets/"
 
 func _ready():
-	print(instrumentSounds["piano"])
+	print(instrumentSounds["drum"])
 
 var instruments = {
 	"lute": {
@@ -32,9 +32,9 @@ var instruments = {
 }
 
 var instrumentSounds = {
-	"piano": genSoundPath("piano"),
-	"guitar": genSoundPath("guitar"),
-	"flute": genSoundPath("flute"),
+	"drum": genSoundPath("drum"),
+	"lute": genSoundPath("lute"),
+	"recorder": genSoundPath("recorder"),
 	}
 
 func genSoundPath(instrumentName: String) -> Array:
@@ -42,8 +42,8 @@ func genSoundPath(instrumentName: String) -> Array:
 	var sounds = []
 	
 	for i in range(1, 9):
-		sounds.append("%ssound%d.wave" % [basePath, i])
+		sounds.append("%ssound%d.wav" % [basePath, i])
 	
 	# Add the incorrect sound
-	sounds.append("%sincorrect_%s.wave" % [basePath, instrumentName])
+	sounds.append("%sincorrect_%s.wav" % [basePath, instrumentName])
 	return sounds

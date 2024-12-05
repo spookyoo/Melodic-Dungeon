@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var notes = $NoteManager
 @onready var mark = $Head/Camera3D/Weapon
 @onready var area = $Area3D
+@onready var audioManager = $AudioManager
 var lastCollided : Enemy = null
 var maxHealth = 100
 var playerHealth = 100
@@ -35,6 +36,11 @@ var comboFirstEnemyContact = false
 var infusionSpeedBoost = 4
 var healingAmount = 18
 var invicible = false
+# Music
+var currKeyIdx = 0
+var ascending = true
+var correctSounds = []
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -106,12 +112,22 @@ func applyMovement(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	playWalkingSFX(input_dir)
+	
 	if is_on_floor():
 		velocity.x = direction.x * speed if direction else 0.0
 		velocity.z = direction.z * speed if direction else 0.0
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+
+func playWalkingSFX(input_dir: Vector2):
+	if is_on_floor():
+		if input_dir:
+			if !audioManager.get_node("WalkingSound").playing:
+				audioManager.get_node("WalkingSound").play()
+		if !input_dir:
+			audioManager.get_node("WalkingSound").stop()
 
 func applyCamEffects(delta):
 	"""
@@ -249,17 +265,21 @@ func applyInstrument():
 			%Sprite3D.texture = load(GlobalInstruments.instruments["lute"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
 			raycast.target_position -= Vector3(0, GlobalInstruments.instruments["lute"]["passive"], 0)
-			
+			correctSounds = GlobalInstruments.instrumentSounds["lute"]
 		"drum":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
 			walk_speed += GlobalInstruments.instruments["drum"]["passive"]
+			correctSounds = GlobalInstruments.instrumentSounds["drum"]
 		"recorder":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
 			maxHealth += GlobalInstruments.instruments["recorder"]["passive"]
+			correctSounds = GlobalInstruments.instrumentSounds["recorder"]
 		_:
 			%Sprite3D.texture = null
+			correctSounds = []
+	audioManager.get_node("Incorrect").stream = load(correctSounds[-1])
 
 func activateInfusion():
 	match GlobalPlayer.instrument:

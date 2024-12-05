@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwto4lppdnt25"
-path="res://.godot/imported/sound4.wav-e5ba5ebb3a3789cf6194e35e3b0b0380.sample"
+path="res://.godot/imported/sound4.wav-4af443016321550bce4883d9145c7666.sample"
 
 [deps]
 
-source_file="res://player/sounds/correct/guitar/sound4.wav"
-dest_files=["res://.godot/imported/sound4.wav-e5ba5ebb3a3789cf6194e35e3b0b0380.sample"]
+source_file="res://player/sounds/correct/lute/sound4.wav"
+dest_files=["res://.godot/imported/sound4.wav-4af443016321550bce4883d9145c7666.sample"]
 
 [params]
 

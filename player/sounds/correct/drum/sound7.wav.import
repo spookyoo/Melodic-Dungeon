@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dku15v7o75vk8"
-path="res://.godot/imported/sound7.wav-28506f8a3440cee4625b63b9a431c38d.sample"
+path="res://.godot/imported/sound7.wav-fb03ad30493a78783e6ed52dea664829.sample"
 
 [deps]
 
-source_file="res://player/sounds/correct/piano/sound7.wav"
-dest_files=["res://.godot/imported/sound7.wav-28506f8a3440cee4625b63b9a431c38d.sample"]
+source_file="res://player/sounds/correct/drum/sound7.wav"
+dest_files=["res://.godot/imported/sound7.wav-fb03ad30493a78783e6ed52dea664829.sample"]
 
 [params]
 

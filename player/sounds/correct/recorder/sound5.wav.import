@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dqcgk16fc586b"
-path="res://.godot/imported/sound5.wav-100a5253127a921eba0494ec8a2bffdf.sample"
+path="res://.godot/imported/sound5.wav-65af050b7762e5244cd4bb8c4c008261.sample"
 
 [deps]
 
-source_file="res://player/sounds/correct/flute/sound5.wav"
-dest_files=["res://.godot/imported/sound5.wav-100a5253127a921eba0494ec8a2bffdf.sample"]
+source_file="res://player/sounds/correct/recorder/sound5.wav"
+dest_files=["res://.godot/imported/sound5.wav-65af050b7762e5244cd4bb8c4c008261.sample"]
 
 [params]
 
