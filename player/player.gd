@@ -183,10 +183,9 @@ func handleInput():
 		var expectedKey = lastCollided.keyQueue.front()     # GET THE LAST KEY FROM THE STACK
 		
 		if Input.is_action_just_pressed(expectedKey):
-			notes
 			#print("CORRECT KEY PRESSED: ", expectedKey)
 			lastCollided.keyQueue.pop_front() # remove first key from queue
-			#lastCollided.updateLabel()
+			playCorrect()
 			updateKeyLabel()
 			notes.correct(mark,lastCollided)
 			
@@ -213,8 +212,7 @@ func handleInput():
 				if Input.is_action_just_pressed(key):
 					resetCombo()
 					#print("Wrong key pressed: ", key)
-					#playerHealth -= 10
-					#hpUpdate.emit(playerHealth)
+					playIncorrect()
 					takeDamage(10)
 					print(playerHealth)
 					notes.incorrect()
@@ -303,6 +301,25 @@ func playIncorrect():
 	await get_tree().create_timer(1.0).timeout
 	audioManager.get_node("Incorrect").stop
 
+func playInfusion():
+	audioManager.get_node("Infusion").stream = load(correctSounds[currentNoteIdx])
+	audioManager.get_node("Infusion").pitch_scale = 1.5
+	audioManager.get_node("Infusion").play()
+	await get_tree().create_timer(1.0).timeout
+	audioManager.get_node("Infusion").stop()
+	audioManager.get_node("Infusion").pitch_scale = 1.0
+	
+	if ascending:
+		currentNoteIdx += 1
+		if currentNoteIdx >= 8:
+			ascending = false
+			currentNoteIdx = 7
+	else:
+		currentNoteIdx -= 1
+		if currentNoteIdx < 0:
+			ascending = true
+			currentNoteIdx = 1
+
 func activateInfusion():
 	match GlobalPlayer.instrument:
 		"lute":
@@ -320,6 +337,7 @@ func activateInfusion():
 			# could have a healing effect animation
 		_:
 			pass
+	playInfusion()
 
 func _on_speed_boost_timeout() -> void:
 	walk_speed -= infusionSpeedBoost
