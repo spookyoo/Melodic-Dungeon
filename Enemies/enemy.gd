@@ -3,6 +3,7 @@ class_name Enemy
 
 var minHealth = 1
 var maxHealth = 5
+var damage: int = 10
 @onready var label = $Label
 @export var attackDistance = 20.0
 @export var speed = 15
@@ -18,6 +19,7 @@ var isFreed = false    # flag to check if enemy has been freed
 
 func _ready():
 	player = get_tree().get_current_scene().get_node("Player")
+	add_to_group("enemy")
 	#keys = genRandomkeys(int(randf_range(1,5)))
 	keys = genRandomkeys(int(randf_range(minHealth,maxHealth)))
 	keyQueue = keys.split(" ")

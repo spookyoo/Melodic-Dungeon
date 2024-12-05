@@ -24,5 +24,5 @@ text = "BEAN #1"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3m108")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["enemy"]]
 shape = SubResource("ConvexPolygonShape3D_dfob7")

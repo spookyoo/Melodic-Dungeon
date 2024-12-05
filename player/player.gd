@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var notes = $NoteManager
 @onready var mark = $Head/Camera3D/Weapon
+@onready var area = $Area3D
 var lastCollided : Enemy = null
 var maxHealth = 100
 var playerHealth = 100
@@ -33,6 +34,7 @@ var comboFirstEnemyContact = false
 # Infusion
 var infusionSpeedBoost = 4
 var healingAmount = 18
+var invicible = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -54,8 +56,8 @@ func _physics_process(delta: float) -> void:
 	applyCamEffects(delta)
 	move_and_slide()
 	performRaycast()
+	checkCollision()
 	handleInput()
-
 
 func handleCamera(event):
 	"""
@@ -147,9 +149,15 @@ func performRaycast():
 		if collider is Enemy and not collider.isFreed:
 			var enemyLabel = collider.get_node("Label")
 			enemyLabel.visible = true
-				
 			lastCollided = collider
-					
+
+func checkCollision():
+	if invicible:
+		return
+	for body in area.get_overlapping_bodies():
+		if body.is_in_group("enemy"):
+			takeDamage(body.damage)
+
 func handleInput():
 	"""
 	What will happen when we look at the LABEL (STACK VARIATION)
@@ -176,7 +184,7 @@ func handleInput():
 			
 			# call takedamage on the boss
 			if lastCollided is Boss:
-				lastCollided.takeDamage()
+				lastCollided.damageBoss()
 			
 			# check if queue is empty (handles killing enemies)
 			if lastCollided.keyQueue.size() == 0:
@@ -189,9 +197,9 @@ func handleInput():
 				if Input.is_action_just_pressed(key):
 					resetCombo()
 					#print("Wrong key pressed: ", key)
-					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
-					playerHealth -= 10
-					hpUpdate.emit(playerHealth)
+					#playerHealth -= 10
+					#hpUpdate.emit(playerHealth)
+					takeDamage(10)
 					print(playerHealth)
 					notes.incorrect()
 					break
@@ -202,6 +210,20 @@ func updateKeyLabel():
 	#var completedKeys = lastCollided.keyQueue.slice(0, currentKeyIdx)
 	#var remainingKeys = lastCollided.keyQueue.slice(currentKeyIdx, lastCollided.keyQueue.size())
 
+func takeDamage(amount: int):
+	playerHealth -= amount
+	hpUpdate.emit(playerHealth)
+	if playerHealth <= 0:
+		die()
+	else:
+		invicible = true
+		$Invicibility.start()
+	
+func die():
+	velocity = Vector3.ZERO
+	set_process(false)
+	print("playerDie")
+	
 func activatePerfectCombo():
 	perfectComboActivated = true
 	
@@ -260,3 +282,7 @@ func activateInfusion():
 func _on_speed_boost_timeout() -> void:
 	walk_speed -= infusionSpeedBoost
 	print("Infusion Ended, Speed Reverted")
+
+func _on_invicibility_timeout() -> void:
+	invicible = false
+	print("Invincibility Over!")

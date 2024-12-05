@@ -5,7 +5,8 @@ class_name Goblin
 func _ready():
 	minHealth = 2
 	maxHealth = 5
-	speed = 15
+	speed = 18
+	damage = 6
 	super._ready()
 	
 	#print("Goblin keys: " + keys)

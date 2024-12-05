@@ -14,7 +14,7 @@ func _ready():
 	label.text = str(keys)     # ensures the intial keystrokes are displayed
 	randomizeTimer.start()
 
-func takeDamage():
+func damageBoss():
 	if not isVulnerable:
 		return
 	health -= 1
