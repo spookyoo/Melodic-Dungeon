@@ -7,7 +7,7 @@ var instruments = {
 		"icon": INSTRUMENT_PATH + "lute.png",
 		"comboThreshold": 8,
 		"passive": 0, #RANGE INCREASE
-		"active": "Resonating Tune",
+		"active": "Resonating Tune - Double Note",
 		"description": "A lute with a powerful tune",
 	},
 	
@@ -15,7 +15,7 @@ var instruments = {
 		"icon": INSTRUMENT_PATH + "drum.png",
 		"comboThreshold": 10,
 		"passive": 1.5, #SPEED BOOST
-		"active": "Rapid Rhythm",
+		"active": "Rapid Rhythm - Speed Boost",
 		"description": "The drum's rhythm makes you quicker on your feet",
 	},
 	
@@ -23,7 +23,7 @@ var instruments = {
 		"icon": INSTRUMENT_PATH + "recorder.png",
 		"comboThreshold": 14,
 		"passive":  25,#INCREASED MAX HP
-		"active": "Soothing Grace", 
+		"active": "Soothing Grace - Heal", 
 		"description": "The recorder plays a soothing melody",
 	},
 }

@@ -6,8 +6,11 @@ extends CharacterBody3D
 @onready var notes = $NoteManager
 @onready var mark = $Head/Camera3D/Weapon
 var lastCollided : Enemy = null
+var maxHealth = 100
 var playerHealth = 100
 var currentKeyIdx = 0
+
+signal hpUpdate
 
 var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
@@ -232,6 +235,7 @@ func handleInput():
 					#print("Wrong key pressed: ", key)
 					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
 					playerHealth -= 10
+					hpUpdate.emit(playerHealth)
 					print(playerHealth)
 					notes.incorrect()
 					break
@@ -253,6 +257,7 @@ func activatePerfectCombo():
 		print("perfect combo activated with", currentWeapon)
 
 func resetCombo():
+	print("RESETTED")
 	comboStreak = 0
 	comboFirstEnemyContact = false
 	perfectComboActivated = false

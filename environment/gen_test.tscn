@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=24 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdobi2qarrfop" path="res://player/assets/healthEmpty.png" id="9_akqjh"]
 [ext_resource type="Script" path="res://player/hud/hudEquip.gd" id="9_gus0s"]
 [ext_resource type="Script" path="res://player/hud/timer.gd" id="9_mqst4"]
+[ext_resource type="Script" path="res://player/hud/health.gd" id="9_vnxnt"]
 [ext_resource type="Texture2D" uid="uid://ck6ltgssd21va" path="res://player/assets/healthFull.png" id="10_um8xb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1uyme"]
@@ -143,8 +144,9 @@ text = "00000000"
 [node name="Health" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("9_vnxnt")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Container/Health"]
+[node name="hpBar" type="TextureProgressBar" parent="HUD/Container/Health"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 32.0
