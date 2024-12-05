@@ -3,7 +3,7 @@ extends Node3D
 @export var roomScene : PackedScene
 @export var dungeonWidth : int = 9
 @export var dungeonHeight : int = 7
-@export var mainBranchLength : int = 8
+@export var mainBranchLength : int = 8              # default is 8
 @export var roomSize : Vector3 = Vector3(30,0,30)
 
 #@onready var camera = $Camera3D
@@ -199,18 +199,14 @@ func roomActivate(x,z):
 			remainingEnemies = 1    # track boss as the last enemy
 			await isEnemiesDefeated([bossInstance])
 		else:
-			var enemies = spawnEnemies(x, z)
+			var randomMonsterType = randi() % 2
+			#var randomMonsterType = 3
+			var enemies = spawnEnemies(x, z, randomMonsterType)
 			remainingEnemies = enemies.size()
 			await isEnemiesDefeated(enemies)
-
-		# While theres no more enemies do nothing???
-		#while enemies.size() > 0:
-			#pass
-			
-		#await get_tree().create_timer(3.0).timeout
 		completedDoors(x,z)
 	
-func spawnEnemies(x, z) -> Array:
+func spawnEnemies(x, z, monsterType) -> Array:
 	var enemies = []
 	var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
 	var roomMin = Vector3(roomCenter.x - roomSize.x / 2 + 5, 0, roomCenter.z - roomSize.z / 2 + 5)
@@ -225,13 +221,23 @@ func spawnEnemies(x, z) -> Array:
 			randf_range(roomMin.z, roomMax.z)
 		)
 		
-		var enemyInstance = enemyScene.instantiate()
-		add_child(enemyInstance)
-		enemyInstance.call_deferred("set", "global_position", randomPosition)
-		#enemyInstance.global_position = randomPosition
-		#add_child(enemyInstance)
-		#call_deferred("add_child", enemyInstance)
-		enemies.append(enemyInstance)
+		#var enemyInstance = enemyScene.instantiate()
+		var enemyInstance = null
+		match monsterType:
+			0: # Ogres
+				enemyInstance = preload("res://Enemies/MonsterType/Ogre.tscn").instantiate()
+			1: # Goblin
+				enemyInstance = preload("res://Enemies/MonsterType/Goblin.tscn").instantiate()
+			#2: # Assortment of both
+				#if randi() % 2 == 0:
+					#enemyInstance = preload("res://Enemies/MonsterType/Ogre.tscn").instantiate()
+				#else:
+					#enemyInstance = preload("res://Enemies/MonsterType/Goblin.tscn").instantiate()
+		
+		if enemyInstance:
+			add_child(enemyInstance)
+			enemyInstance.call_deferred("set", "global_position", randomPosition)
+			enemies.append(enemyInstance)
 	return enemies
 
 func isEnemiesDefeated(enemies : Array):

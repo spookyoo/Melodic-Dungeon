@@ -22,7 +22,7 @@ const FOV_CHANGE = 1.5
 # Combo Variables
 var currentWeapon = "lute"
 var comboStreak = 0
-var perfectComboActivated = false 
+var perfectComboActivated = false
 var comboFirstEnemyContact = false
 
 var weapons = {
@@ -45,7 +45,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		handleCamera(event)
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	handleJumping(delta)
 	applyMovement(delta)
 	applyCamEffects(delta)
@@ -141,7 +141,7 @@ func performRaycast():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		
-		if collider is Enemy:
+		if collider is Enemy and not collider.isFreed:
 			var enemyLabel = collider.get_node("Label")
 			enemyLabel.visible = true
 				
@@ -151,7 +151,7 @@ func handleInput():
 	"""
 	What will happen when we look at the LABEL (STACK VARIATION)
 	"""
-	if lastCollided && lastCollided.keyQueue.size() > 0:
+	if lastCollided && lastCollided.keyQueue.size() > 0 && (not lastCollided.has_method("isRandomizing") or not lastCollided.isRandomizing):
 		#print("current key stackqueue: ", lastCollided.keyQueue)
 		var expectedKey = lastCollided.keyQueue.front()     # GET THE LAST KEY FROM THE STACK
 		
@@ -164,15 +164,19 @@ func handleInput():
 			notes.correct(mark,lastCollided)
 			
 			comboStreak += 1
-			print("Combo Streak:", comboStreak)
+			#print("Combo Streak:", comboStreak)
 			
 			var currentWeaponData = weapons[currentWeapon]
 			if comboStreak >= currentWeaponData["comboThreshold"] && not perfectComboActivated:
 				activatePerfectCombo()
 			
+			# call takedamage on the boss
+			if lastCollided is Boss:
+				lastCollided.takeDamage()
+			
 			# check if queue is empty (handles killing enemies)
 			if lastCollided.keyQueue.size() == 0:
-				lastCollided.queue_free()
+				lastCollided.die()
 				lastCollided = null
 		else:
 			# check wrong keys
