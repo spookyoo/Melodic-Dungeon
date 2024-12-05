@@ -1,0 +1,135 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1wvorapkcpf"]
+
+[ext_resource type="Texture2D" uid="uid://bbsq6me1qnqy7" path="res://menus/mainMenu/mainMenu.png" id="1_jjbe2"]
+[ext_resource type="Script" path="res://menus/credits/credits.gd" id="1_n6a64"]
+[ext_resource type="FontFile" uid="uid://bhau1nh8nfrs6" path="res://menus/fonts/CinzelDecorative-Bold.ttf" id="2_filfr"]
+[ext_resource type="FontFile" uid="uid://de8poo4crsxkm" path="res://menus/fonts/CinzelDecorative-Regular.ttf" id="3_e4gy3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bej05"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n6a64")
+
+[node name="Viewport" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Viewport"]
+layout_mode = 2
+texture = ExtResource("1_jjbe2")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Viewport"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 60
+
+[node name="Title" type="Control" parent="Viewport/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Viewport/MarginContainer/Title"]
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_filfr")
+theme_override_font_sizes/font_size = 64
+text = "MELODIC DUNGEON"
+
+[node name="Title2" type="Control" parent="Viewport/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Viewport/MarginContainer/Title2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -148.5
+offset_right = 715.0
+offset_bottom = -83.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_filfr")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="Play" type="Control" parent="Viewport/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Viewport/MarginContainer/Play"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 223.0
+offset_bottom = 100.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bej05")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/MarginContainer/Play/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Viewport/MarginContainer/Play/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e4gy3")
+theme_override_font_sizes/font_size = 24
+text = "Daniel Ibekwe"
+
+[node name="Label2" type="Label" parent="Viewport/MarginContainer/Play/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e4gy3")
+theme_override_font_sizes/font_size = 24
+text = "Hasnat Gondal"
+
+[node name="Label3" type="Label" parent="Viewport/MarginContainer/Play/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e4gy3")
+theme_override_font_sizes/font_size = 24
+text = "Mark Mandac"
+
+[node name="Label4" type="Label" parent="Viewport/MarginContainer/Play/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e4gy3")
+theme_override_font_sizes/font_size = 24
+text = "Melvin Cruz"
+
+[node name="Back" type="Control" parent="Viewport/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="backButton" type="Button" parent="Viewport/MarginContainer/Back"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 106.0
+offset_right = 354.0
+offset_bottom = 156.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_filfr")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="Viewport/MarginContainer/Back/backButton" to="." method="_on_back_button_pressed"]

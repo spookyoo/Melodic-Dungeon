@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d25ao2eg2lfvp"]
+[gd_scene load_steps=4 format=3 uid="uid://d25ao2eg2lfvp"]
 
 [ext_resource type="Texture2D" uid="uid://bbsq6me1qnqy7" path="res://menus/mainMenu/mainMenu.png" id="1_21hlt"]
+[ext_resource type="Script" path="res://menus/mainMenu/main_menu.gd" id="1_syo1w"]
 [ext_resource type="FontFile" uid="uid://bhau1nh8nfrs6" path="res://menus/fonts/CinzelDecorative-Bold.ttf" id="2_k6txu"]
 
 [node name="MainMenu" type="Control"]
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_syo1w")
 
 [node name="Viewport" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -48,7 +50,7 @@ text = "MELODIC DUNGEON"
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Viewport/MarginContainer/Play"]
+[node name="playButton" type="Button" parent="Viewport/MarginContainer/Play"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -61,12 +63,13 @@ theme_override_fonts/font = ExtResource("2_k6txu")
 theme_override_font_sizes/font_size = 30
 text = "Enter the Dungeon"
 flat = true
+alignment = 0
 
 [node name="Options" type="Control" parent="Viewport/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Viewport/MarginContainer/Options"]
+[node name="optionsButton" type="Button" parent="Viewport/MarginContainer/Options"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -84,7 +87,7 @@ flat = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Viewport/MarginContainer/Credits"]
+[node name="creditsButton" type="Button" parent="Viewport/MarginContainer/Credits"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -102,7 +105,7 @@ flat = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Viewport/MarginContainer/Exit"]
+[node name="exitButton" type="Button" parent="Viewport/MarginContainer/Exit"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -116,3 +119,8 @@ theme_override_font_sizes/font_size = 30
 text = "Exit"
 flat = true
 alignment = 0
+
+[connection signal="pressed" from="Viewport/MarginContainer/Play/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Viewport/MarginContainer/Options/optionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Viewport/MarginContainer/Credits/creditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Viewport/MarginContainer/Exit/exitButton" to="." method="_on_exit_button_pressed"]

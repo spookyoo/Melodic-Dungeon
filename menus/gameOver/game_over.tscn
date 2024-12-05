@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://m26gejupwwo7"]
+
+[ext_resource type="Script" path="res://menus/gameOver/game_over.gd" id="1_37ggl"]
+[ext_resource type="FontFile" uid="uid://bhau1nh8nfrs6" path="res://menus/fonts/CinzelDecorative-Bold.ttf" id="1_c8jik"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ljohd"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37ggl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_ljohd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="Retry" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="retryButton" type="Button" parent="MarginContainer/Retry"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.5
+offset_top = -150.0
+offset_right = -143.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_c8jik")
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+flat = true
+alignment = 0
+
+[node name="Quit" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="quitButton" type="Button" parent="MarginContainer/Quit"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_top = -150.0
+offset_right = 246.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_c8jik")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+flat = true
+alignment = 0
+
+[node name="Title" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.5
+offset_top = 100.0
+offset_right = 207.5
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_c8jik")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[connection signal="pressed" from="MarginContainer/Retry/retryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Quit/quitButton" to="." method="_on_quit_button_pressed"]

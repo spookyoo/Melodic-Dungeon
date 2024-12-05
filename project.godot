@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="a3_proto"
-run/main_scene="res://environment/gen_test.tscn"
+run/main_scene="res://menus/mainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
