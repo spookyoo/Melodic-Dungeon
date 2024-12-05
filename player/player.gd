@@ -11,6 +11,7 @@ var playerHealth = 100
 var currentKeyIdx = 0
 
 signal hpUpdate
+signal comboUpdate
 
 var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
@@ -169,7 +170,7 @@ func handleInput():
 			notes.correct(mark,lastCollided)
 			
 			comboStreak += 1
-			#print("Combo Streak:", comboStreak)
+			print("Combo Streak:", comboStreak)
 			
 			var currentWeaponData = weapons[currentWeapon]
 			if comboStreak >= currentWeaponData["comboThreshold"] && not perfectComboActivated:
@@ -184,11 +185,9 @@ func handleInput():
 				lastCollided.die()
 				lastCollided = null
 		else:
-			# check wrong keys
-			resetCombo()
-			
 			for key in lastCollided.keys.split(" "):
 				if Input.is_action_just_pressed(key):
+					resetCombo()
 					#print("Wrong key pressed: ", key)
 					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
 					playerHealth -= 10
@@ -207,7 +206,7 @@ func activatePerfectCombo():
 	perfectComboActivated = true
 	
 	# activate the current weapon's active ability
-	var currentWeaponData = weapons[currentWeapon]
+	var currentWeaponData = GlobalInstruments.instruments[GlobalPlayer.instrument]
 	if currentWeaponData && currentWeaponData["active"]:
 		currentWeaponData["active"].call()
 		
