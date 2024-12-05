@@ -1,16 +1,26 @@
 extends Node
 
 var instrument = ""
-var player
+var rarity = ""
+var player : CharacterBody3D = null
+signal update
 
-func changeInstrument(instrument, rarity):
-	match instrument:
-		"lute":
-			
-		"drum":
-			
-		"recorder":
-			
+func _ready():
+	return
+
+func instantiate():
+	if instrument == "":
+		changeInstrument(GlobalInstruments.instruments.keys().pick_random(),"common")
+	notifyUpdate()
+
+func changeInstrument(newInstrument, newRarity):
+	instrument  = newInstrument
+	rarity = newRarity
+	notifyUpdate()
+
+func notifyUpdate():
+	update.emit()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

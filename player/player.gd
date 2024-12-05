@@ -6,8 +6,11 @@ extends CharacterBody3D
 @onready var notes = $NoteManager
 @onready var mark = $Head/Camera3D/Weapon
 var lastCollided : Enemy = null
+var maxHealth = 100
 var playerHealth = 100
 var currentKeyIdx = 0
+
+signal hpUpdate
 
 var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
@@ -35,7 +38,9 @@ var weapons = {
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	GlobalInstruments.player = self
+	GlobalPlayer.player = self
+	GlobalPlayer.update.connect(self.applyInstrument)
+	GlobalPlayer.instantiate()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel") || event.is_action_pressed("exit"):
@@ -187,6 +192,7 @@ func handleInput():
 					#print("Wrong key pressed: ", key)
 					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
 					playerHealth -= 10
+					hpUpdate.emit(playerHealth)
 					print(playerHealth)
 					notes.incorrect()
 					break
@@ -206,8 +212,23 @@ func activatePerfectCombo():
 		currentWeaponData["active"].call()
 		
 		print("perfect combo activated with", currentWeapon)
-		
+
 func resetCombo():
+	print("RESETTED")
 	comboStreak = 0
 	comboFirstEnemyContact = false
 	perfectComboActivated = false
+
+func applyInstrument():
+	match GlobalPlayer.instrument:
+		"lute":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["lute"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+		"drum":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
+		"recorder":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+		_:
+			%Sprite3D.texture = null

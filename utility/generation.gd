@@ -35,6 +35,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
 		get_tree().change_scene_to_file("res://environment/gen_test.tscn")
+		GlobalPlayer.instrument = ""
 
 func generateDungeon():
 	floors = []

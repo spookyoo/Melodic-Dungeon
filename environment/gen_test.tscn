@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=24 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
@@ -8,7 +8,11 @@
 [ext_resource type="Script" path="res://Enemies/AttackQueue.gd" id="6_lhtfu"]
 [ext_resource type="PackedScene" uid="uid://cerhmeifo2c0b" path="res://player/hud/hudTile.tscn" id="7_ucryf"]
 [ext_resource type="FontFile" uid="uid://53ylwf3wf42u" path="res://player/hud/pixel.ttf" id="8_w6vw3"]
+[ext_resource type="Texture2D" uid="uid://bdobi2qarrfop" path="res://player/assets/healthEmpty.png" id="9_akqjh"]
+[ext_resource type="Script" path="res://player/hud/hudEquip.gd" id="9_gus0s"]
 [ext_resource type="Script" path="res://player/hud/timer.gd" id="9_mqst4"]
+[ext_resource type="Script" path="res://player/hud/health.gd" id="9_vnxnt"]
+[ext_resource type="Texture2D" uid="uid://ck6ltgssd21va" path="res://player/assets/healthFull.png" id="10_um8xb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1uyme"]
 
@@ -35,6 +39,17 @@ volumetric_fog_enabled = true
 [sub_resource type="CanvasTexture" id="CanvasTexture_o4kaw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wo2ry"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_phdgi"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_qeu5o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e60xe"]
+font_color = Color(0.997707, 0.847398, 0.364805, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_merx5"]
+font_color = Color(0.604971, 0.890053, 0.0918342, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ah1k6"]
 
@@ -119,8 +134,9 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="HUD/Container/Score"]
 texture_filter = 1
 layout_mode = 0
-offset_right = 126.0
-offset_bottom = 23.0
+offset_left = 32.0
+offset_right = 158.0
+offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("8_w6vw3")
 theme_override_font_sizes/font_size = 28
 text = "00000000"
@@ -128,10 +144,28 @@ text = "00000000"
 [node name="Health" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("9_vnxnt")
+
+[node name="hpBar" type="TextureProgressBar" parent="HUD/Container/Health"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 317.0
+offset_bottom = 70.5
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("10_um8xb")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Container/Health"]
+z_index = -1
+position = Vector2(176, 51)
+scale = Vector2(4.4, 4.4)
+texture = ExtResource("9_akqjh")
 
 [node name="Inventory" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("9_gus0s")
 
 [node name="Border" type="TextureRect" parent="HUD/Container/Inventory"]
 modulate = Color(0, 0, 0, 1)
@@ -141,9 +175,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -56.0
+offset_left = -185.0
 offset_top = -106.0
-offset_right = 56.0
+offset_right = -73.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -157,23 +191,90 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
+offset_left = -179.0
 offset_top = -100.0
-offset_right = 50.0
+offset_right = -79.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CanvasTexture_wo2ry")
 
 [node name="Instrument" type="Sprite2D" parent="HUD/Container/Inventory/Back"]
+unique_name_in_owner = true
 z_index = 2
 position = Vector2(50.25, 49.75)
 scale = Vector2(3.10937, 3.10937)
 
-[node name="Control" type="Control" parent="HUD/Container"]
+[node name="Panel" type="Panel" parent="HUD/Container/Inventory"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -106.0
+offset_right = 186.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="name" type="Label" parent="HUD/Container/Inventory/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 53.0
+offset_bottom = 28.0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 20
+text = "Rarity Name"
+label_settings = SubResource("LabelSettings_phdgi")
+
+[node name="desc" type="Label" parent="HUD/Container/Inventory/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 260.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("8_w6vw3")
+text = "description"
+label_settings = SubResource("LabelSettings_qeu5o")
+autowrap_mode = 3
+
+[node name="active" type="Label" parent="HUD/Container/Inventory/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 66.0
+offset_right = 93.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("8_w6vw3")
+text = "active"
+label_settings = SubResource("LabelSettings_e60xe")
+
+[node name="passive" type="Label" parent="HUD/Container/Inventory/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 88.0
+offset_right = 93.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("8_w6vw3")
+text = "passive"
+label_settings = SubResource("LabelSettings_merx5")
+
+[node name="Time" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="HUD/Container/Control"]
+[node name="Panel" type="Panel" parent="HUD/Container/Time"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -185,7 +286,7 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ah1k6")
 script = ExtResource("9_mqst4")
 
-[node name="hour" type="Label" parent="HUD/Container/Control/Panel"]
+[node name="hour" type="Label" parent="HUD/Container/Time/Panel"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -200,7 +301,7 @@ theme_override_font_sizes/font_size = 28
 text = "00:"
 horizontal_alignment = 2
 
-[node name="min" type="Label" parent="HUD/Container/Control/Panel"]
+[node name="min" type="Label" parent="HUD/Container/Time/Panel"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -215,7 +316,7 @@ theme_override_font_sizes/font_size = 28
 text = "00:"
 horizontal_alignment = 2
 
-[node name="sec" type="Label" parent="HUD/Container/Control/Panel"]
+[node name="sec" type="Label" parent="HUD/Container/Time/Panel"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
