@@ -30,6 +30,7 @@ var perfectComboActivated = false
 var comboFirstEnemyContact = false
 # Infusion
 var infusionSpeedBoost = 4
+var healingAmount = 18
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -220,27 +221,34 @@ func applyInstrument():
 		"lute":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["lute"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+			raycast.target_position -= Vector3(0, GlobalInstruments.instruments["lute"]["passive"], 0)
+			
 		"drum":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
-			walk_speed += 1
+			walk_speed += GlobalInstruments.instruments["drum"]["passive"]
 		"recorder":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+			maxHealth += GlobalInstruments.instruments["recorder"]["passive"]
 		_:
 			%Sprite3D.texture = null
 
 func activateInfusion():
 	match GlobalPlayer.instrument:
 		"lute":
-			pass
+			if lastCollided and lastCollided.keyQueue.size() > 0:
+				lastCollided.keyQueue.pop_front()
+				updateKeyLabel()
 		"drum":
 			walk_speed += infusionSpeedBoost
 			$SpeedBoost.start()
 			print("Infusion started. Speedboosted by", infusionSpeedBoost)
 				
 		"recorder":
-			pass
+			playerHealth = min(playerHealth + healingAmount, maxHealth)
+			hpUpdate.emit(playerHealth)
+			# could have a healing effect animation
 		_:
 			pass
 
