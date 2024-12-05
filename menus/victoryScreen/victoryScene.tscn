@@ -100,6 +100,6 @@ theme_override_fonts/font = ExtResource("2_qde1j")
 theme_override_font_sizes/font_size = 64
 text = "VICTORY"
 
-[connection signal="pressed" from="MarginContainer/PlayAgain/playAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PlayAgain/playAgainButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PlayAgain/playAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Quit/quitButton" to="." method="_on_quit_button_pressed"]

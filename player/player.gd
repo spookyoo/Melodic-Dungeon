@@ -345,4 +345,4 @@ func _on_speed_boost_timeout() -> void:
 
 func _on_invicibility_timeout() -> void:
 	invicible = false
-	print("Invincibility Over!")
+	#print("Invincibility Over!")
