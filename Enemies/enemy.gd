@@ -3,8 +3,8 @@ class_name Enemy
 
 var health = 100
 @onready var label = $Label
-@export var attackDistance = 10.0
-@export var speed = 10
+@export var attackDistance = 20.0
+@export var speed = 15
 @onready var attackQueue = get_tree().get_current_scene().get_node("AttackQueue") 
 
 var keys: String = ""
@@ -13,15 +13,17 @@ var currentKeyIdx = 0
 var isAttacking = false
 var player
 var counter = 0
+var isFreed = false    # flag to check if enemy has been freed
 
 func _ready():
 	player = get_tree().get_current_scene().get_node("Player")
-	
 	keys = genRandomkeys(int(randf_range(1,5)))
 	keyQueue = keys.split(" ")
 	label.text = str(keys)
 
 func _physics_process(delta):
+	if isFreed:
+		return         # STOP ANYTHING THAT IS HAPPENING if enemy is freed
 	counter += 1
 	if counter % 5 == 0:
 		if isAttacking:
@@ -48,23 +50,30 @@ func updateLabel():
 	
 # Attack Related Stuff
 func checkProximity():
-	if not isAttacking and (global_transform.origin - player.global_transform.origin).length() <= attackDistance:
+	if isFreed or not is_instance_valid(player):
+		return
+	
+	# distance to player
+	var distance = (global_transform.origin - player.global_transform.origin).length()
+	if not isAttacking and distance <= attackDistance:
 		if attackQueue.reqAttack(self):
 			startAttack()
 
 func startAttack():
+	if isFreed:
+		return
 	isAttacking = true
 	# we could play animations here later
 
 func finishAttack():
-	if not is_instance_valid(self):
+	if isFreed:
 		return
 	isAttacking = false
 	if is_instance_valid(attackQueue):
 		attackQueue.finishAttack(self)
 	
 func moveTowardsPlayer(delta):
-	if not is_instance_valid(self) or not is_instance_valid(player):
+	if isFreed or not is_instance_valid(player):
 		return
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction * speed
@@ -72,4 +81,10 @@ func moveTowardsPlayer(delta):
 	
 	if (global_transform.origin - player.global_transform.origin).length() > attackDistance:
 		finishAttack()
-	
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		if is_instance_valid(attackQueue):
+			attackQueue.finishAttack(self)
+func die():
+	call_deferred("queue_free")

@@ -2,6 +2,10 @@ extends Enemy
 class_name Boss
 
 var maxHealth = 35
+@export var randomizeTimer: Timer
+
+var isVulnerable: bool = true
+var isRandomizing: bool = false
 
 func _ready():
 	super()
@@ -9,24 +13,13 @@ func _ready():
 	keys = genRandomkeys(maxHealth)
 	keyQueue = keys.split(" ")
 	label.text = str(keys)     # ensures the intial keystrokes are displayed
-	
+	randomizeTimer.start()
+
 func takeDamage():
+	if not isVulnerable:
+		return
 	health -= 1
 	currentKeyIdx += 1
-	
-	if health == maxHealth * 2/3:
-		print("Phase 2: Randomizing Keystrokes")
-		keys = genRandomkeys(int(maxHealth * 2/3))
-		keyQueue = keys.split(" ")
-		currentKeyIdx = 0
-		label.text = str(keys)
-		
-	elif health == maxHealth * 1/3:
-		print("Phase 3: Randomizing Keystrokes")
-		keys = genRandomkeys(int(maxHealth * 1/3))
-		keyQueue = keys.split(" ")
-		currentKeyIdx = 0
-		label.text = str(keys)
 		
 	if health <= 0:
 		defeat()
@@ -34,3 +27,20 @@ func takeDamage():
 func defeat():
 	print("Boss defeated!")
 	queue_free()
+
+
+func _on_randomize_timer_timeout() -> void:
+	isVulnerable = false
+	isRandomizing = true
+	
+	label.text = "? ".repeat(health)
+	await get_tree().create_timer(1).timeout
+	
+	# Change the keys
+	keys = genRandomkeys(health)
+	keyQueue = keys.split(" ")
+	label.text = str(keys)
+	
+	# End randomziing
+	isRandomizing = false
+	isVulnerable = true
