@@ -24,18 +24,12 @@ const BOB_AMP= 0.08
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 # Combo Variables
-var currentWeapon = "lute"
+var currentWeapon = ""
 var comboStreak = 0
 var perfectComboActivated = false
 var comboFirstEnemyContact = false
-
-var weapons = {
-	"lute": {
-		"comboThreshold": 7,
-		"passive": func(): pass,
-		"active": func(): pass
-	}
-}
+# Infusion
+var infusionSpeedBoost = 4
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -101,8 +95,8 @@ func applyMovement(delta):
 	"""
 	var speed = walk_speed
 	
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
+	#if Input.is_action_pressed("sprint"):
+		#speed = SPRINT_SPEED
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -170,9 +164,10 @@ func handleInput():
 			notes.correct(mark,lastCollided)
 			
 			comboStreak += 1
-			print("Combo Streak:", comboStreak)
+			#print("Combo Streak:", comboStreak)
+			comboUpdate.emit(comboStreak)
 			
-			var currentWeaponData = weapons[currentWeapon]
+			var currentWeaponData = GlobalInstruments.instruments[GlobalPlayer.instrument]
 			if comboStreak >= currentWeaponData["comboThreshold"] && not perfectComboActivated:
 				activatePerfectCombo()
 			
@@ -208,9 +203,11 @@ func activatePerfectCombo():
 	# activate the current weapon's active ability
 	var currentWeaponData = GlobalInstruments.instruments[GlobalPlayer.instrument]
 	if currentWeaponData && currentWeaponData["active"]:
-		currentWeaponData["active"].call()
+		#currentWeaponData["infusion"].call()
+		activateInfusion()
 		
-		print("perfect combo activated with", currentWeapon)
+		print("perfect combo activated with", currentWeaponData)
+	resetCombo()
 
 func resetCombo():
 	print("RESETTED")
@@ -226,8 +223,27 @@ func applyInstrument():
 		"drum":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
+			walk_speed += 1
 		"recorder":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
 		_:
 			%Sprite3D.texture = null
+
+func activateInfusion():
+	match GlobalPlayer.instrument:
+		"lute":
+			pass
+		"drum":
+			walk_speed += infusionSpeedBoost
+			$SpeedBoost.start()
+			print("Infusion started. Speedboosted by", infusionSpeedBoost)
+				
+		"recorder":
+			pass
+		_:
+			pass
+
+func _on_speed_boost_timeout() -> void:
+	walk_speed -= infusionSpeedBoost
+	print("Infusion Ended, Speed Reverted")
