@@ -2,6 +2,9 @@ extends Node
 
 const INSTRUMENT_PATH = "res://player/assets/"
 
+func _ready():
+	print(instrumentSounds["piano"])
+
 var instruments = {
 	"lute": {
 		"icon": INSTRUMENT_PATH + "lute.png",
@@ -27,3 +30,20 @@ var instruments = {
 		"description": "The recorder plays a soothing melody",
 	},
 }
+
+var instrumentSounds = {
+	"piano": genSoundPath("piano"),
+	"guitar": genSoundPath("guitar"),
+	"flute": genSoundPath("flute"),
+	}
+
+func genSoundPath(instrumentName: String) -> Array:
+	var basePath = "res://player//sounds/correct/%s/" % instrumentName
+	var sounds = []
+	
+	for i in range(1, 9):
+		sounds.append("%ssound%d.wave" % [basePath, i])
+	
+	# Add the incorrect sound
+	sounds.append("%sincorrect_%s.wave" % [basePath, instrumentName])
+	return sounds
