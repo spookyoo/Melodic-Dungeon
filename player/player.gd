@@ -8,10 +8,12 @@ extends CharacterBody3D
 var lastCollided : Enemy = null
 var maxHealth = 100
 var playerHealth = 100
+var score = 0
 var currentKeyIdx = 0
 
 signal hpUpdate
 signal comboUpdate
+signal scoreUpdate
 
 var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
@@ -179,6 +181,8 @@ func handleInput():
 			# check if queue is empty (handles killing enemies)
 			if lastCollided.keyQueue.size() == 0:
 				lastCollided.die()
+				score += 100
+				scoreUpdate.emit(score)
 				lastCollided = null
 		else:
 			for key in lastCollided.keys.split(" "):
@@ -205,6 +209,7 @@ func activatePerfectCombo():
 	var currentWeaponData = GlobalInstruments.instruments[GlobalPlayer.instrument]
 	if currentWeaponData && currentWeaponData["active"]:
 		#currentWeaponData["infusion"].call()
+		score += 500
 		activateInfusion()
 		
 		print("perfect combo activated with", currentWeaponData)
