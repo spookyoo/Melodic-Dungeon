@@ -5,13 +5,16 @@ extends CharacterBody3D
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var notes = $NoteManager
 @onready var mark = $Head/Camera3D/Weapon
+@onready var area = $Area3D
 var lastCollided : Enemy = null
 var maxHealth = 100
 var playerHealth = 100
+var score = 0
 var currentKeyIdx = 0
 
 signal hpUpdate
 signal comboUpdate
+signal scoreUpdate
 
 var walk_speed = 5.0
 const SPRINT_SPEED = 8.0
@@ -30,6 +33,8 @@ var perfectComboActivated = false
 var comboFirstEnemyContact = false
 # Infusion
 var infusionSpeedBoost = 4
+var healingAmount = 18
+var invicible = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -51,8 +56,8 @@ func _physics_process(delta: float) -> void:
 	applyCamEffects(delta)
 	move_and_slide()
 	performRaycast()
+	checkCollision()
 	handleInput()
-
 
 func handleCamera(event):
 	"""
@@ -144,9 +149,15 @@ func performRaycast():
 		if collider is Enemy and not collider.isFreed:
 			var enemyLabel = collider.get_node("Label")
 			enemyLabel.visible = true
-				
 			lastCollided = collider
-					
+
+func checkCollision():
+	if invicible:
+		return
+	for body in area.get_overlapping_bodies():
+		if body.is_in_group("enemy"):
+			takeDamage(body.damage)
+
 func handleInput():
 	"""
 	What will happen when we look at the LABEL (STACK VARIATION)
@@ -173,20 +184,22 @@ func handleInput():
 			
 			# call takedamage on the boss
 			if lastCollided is Boss:
-				lastCollided.takeDamage()
+				lastCollided.damageBoss()
 			
 			# check if queue is empty (handles killing enemies)
 			if lastCollided.keyQueue.size() == 0:
 				lastCollided.die()
+				score += 100
+				scoreUpdate.emit(score)
 				lastCollided = null
 		else:
 			for key in lastCollided.keys.split(" "):
 				if Input.is_action_just_pressed(key):
 					resetCombo()
 					#print("Wrong key pressed: ", key)
-					#lastCollided.keyQueue.clear() # clear stack if wrong key pressed
-					playerHealth -= 10
-					hpUpdate.emit(playerHealth)
+					#playerHealth -= 10
+					#hpUpdate.emit(playerHealth)
+					takeDamage(10)
 					print(playerHealth)
 					notes.incorrect()
 					break
@@ -197,6 +210,20 @@ func updateKeyLabel():
 	#var completedKeys = lastCollided.keyQueue.slice(0, currentKeyIdx)
 	#var remainingKeys = lastCollided.keyQueue.slice(currentKeyIdx, lastCollided.keyQueue.size())
 
+func takeDamage(amount: int):
+	playerHealth -= amount
+	hpUpdate.emit(playerHealth)
+	if playerHealth <= 0:
+		die()
+	else:
+		invicible = true
+		$Invicibility.start()
+	
+func die():
+	velocity = Vector3.ZERO
+	set_process(false)
+	print("playerDie")
+	
 func activatePerfectCombo():
 	perfectComboActivated = true
 	
@@ -204,6 +231,7 @@ func activatePerfectCombo():
 	var currentWeaponData = GlobalInstruments.instruments[GlobalPlayer.instrument]
 	if currentWeaponData && currentWeaponData["active"]:
 		#currentWeaponData["infusion"].call()
+		score += 500
 		activateInfusion()
 		
 		print("perfect combo activated with", currentWeaponData)
@@ -220,30 +248,41 @@ func applyInstrument():
 		"lute":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["lute"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+			raycast.target_position -= Vector3(0, GlobalInstruments.instruments["lute"]["passive"], 0)
+			
 		"drum":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
-			walk_speed += 1
+			walk_speed += GlobalInstruments.instruments["drum"]["passive"]
 		"recorder":
 			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
 			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+			maxHealth += GlobalInstruments.instruments["recorder"]["passive"]
 		_:
 			%Sprite3D.texture = null
 
 func activateInfusion():
 	match GlobalPlayer.instrument:
 		"lute":
-			pass
+			if lastCollided and lastCollided.keyQueue.size() > 0:
+				lastCollided.keyQueue.pop_front()
+				updateKeyLabel()
 		"drum":
 			walk_speed += infusionSpeedBoost
 			$SpeedBoost.start()
 			print("Infusion started. Speedboosted by", infusionSpeedBoost)
 				
 		"recorder":
-			pass
+			playerHealth = min(playerHealth + healingAmount, maxHealth)
+			hpUpdate.emit(playerHealth)
+			# could have a healing effect animation
 		_:
 			pass
 
 func _on_speed_boost_timeout() -> void:
 	walk_speed -= infusionSpeedBoost
 	print("Infusion Ended, Speed Reverted")
+
+func _on_invicibility_timeout() -> void:
+	invicible = false
+	print("Invincibility Over!")

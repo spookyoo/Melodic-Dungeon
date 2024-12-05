@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=27 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
@@ -7,13 +7,14 @@
 [ext_resource type="Script" path="res://player/hud/mapHud.gd" id="6_1tvm3"]
 [ext_resource type="Script" path="res://Enemies/AttackQueue.gd" id="6_lhtfu"]
 [ext_resource type="PackedScene" uid="uid://cerhmeifo2c0b" path="res://player/hud/hudTile.tscn" id="7_ucryf"]
+[ext_resource type="Script" path="res://player/hud/score.gd" id="8_3ax2c"]
 [ext_resource type="FontFile" uid="uid://53ylwf3wf42u" path="res://player/hud/pixel.ttf" id="8_w6vw3"]
 [ext_resource type="Texture2D" uid="uid://bdobi2qarrfop" path="res://player/assets/healthEmpty.png" id="9_akqjh"]
 [ext_resource type="Script" path="res://player/hud/hudEquip.gd" id="9_gus0s"]
 [ext_resource type="Script" path="res://player/hud/timer.gd" id="9_mqst4"]
 [ext_resource type="Script" path="res://player/hud/health.gd" id="9_vnxnt"]
 [ext_resource type="Texture2D" uid="uid://ck6ltgssd21va" path="res://player/assets/healthFull.png" id="10_um8xb"]
-[ext_resource type="Script" path="res://environment/combo.gd" id="14_xyv8j"]
+[ext_resource type="Script" path="res://player/hud/combo.gd" id="14_xyv8j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1uyme"]
 
@@ -135,8 +136,9 @@ gridTile = ExtResource("7_ucryf")
 [node name="Score" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("8_3ax2c")
 
-[node name="Label" type="Label" parent="HUD/Container/Score"]
+[node name="ScoreLabel" type="Label" parent="HUD/Container/Score"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 32.0
