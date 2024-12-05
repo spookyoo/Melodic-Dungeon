@@ -3,7 +3,7 @@ extends Node3D
 @export var roomScene : PackedScene
 @export var dungeonWidth : int = 9
 @export var dungeonHeight : int = 7
-@export var mainBranchLength : int = 8              # default is 8
+@export var mainBranchLength : int = 8             # default is 8
 @export var roomSize : Vector3 = Vector3(30,0,30)
 
 #@onready var camera = $Camera3D

@@ -236,6 +236,7 @@ func takeDamage(amount: int):
 func die():
 	velocity = Vector3.ZERO
 	set_process(false)
+	get_tree().change_scene_to_file("res://menus/gameOver/game_over.tscn")
 	
 func activatePerfectCombo():
 	perfectComboActivated = true

@@ -25,6 +25,7 @@ func damageBoss():
 		
 func defeat():
 	print("Boss defeated!")
+	get_tree().change_scene_to_file("res://menus/victoryScreen/victoryScene.tscn")
 	queue_free()
 
 

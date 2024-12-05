@@ -19,7 +19,7 @@ script = ExtResource("1_f6fsy")
 randomizeTimer = NodePath("RandomizeTimer")
 
 [node name="Label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01082, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83036, 0)
 visible = false
 billboard = 1
 text = "BEAN #1"
@@ -39,7 +39,7 @@ process_callback = 0
 wait_time = 3.5
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.770223, 0)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.694165, 0)
 billboard = 2
 double_sided = false
 texture_filter = 0
