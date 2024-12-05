@@ -35,7 +35,9 @@ var weapons = {
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	GlobalInstruments.player = self
+	GlobalPlayer.player = self
+	GlobalPlayer.update.connect(self.applyInstrument)
+	GlobalPlayer.instantiate()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel") || event.is_action_pressed("exit"):
@@ -45,7 +47,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		handleCamera(event)
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	handleJumping(delta)
 	applyMovement(delta)
 	applyCamEffects(delta)
@@ -249,8 +251,22 @@ func activatePerfectCombo():
 		currentWeaponData["active"].call()
 		
 		print("perfect combo activated with", currentWeapon)
-		
+
 func resetCombo():
 	comboStreak = 0
 	comboFirstEnemyContact = false
 	perfectComboActivated = false
+
+func applyInstrument():
+	match GlobalPlayer.instrument:
+		"lute":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["lute"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+		"drum":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["drum"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.176,-0.359)
+		"recorder":
+			%Sprite3D.texture = load(GlobalInstruments.instruments["recorder"]["icon"]) as Texture
+			%Instrument.transform.origin = Vector3(0.26,-0.018,-0.359)
+		_:
+			%Sprite3D.texture = null
