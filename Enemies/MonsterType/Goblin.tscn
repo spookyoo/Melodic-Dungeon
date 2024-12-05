@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy0dhrjk0202"]
+[gd_scene load_steps=6 format=3 uid="uid://cy0dhrjk0202"]
 
 [ext_resource type="Script" path="res://Enemies/MonsterType/goblin.gd" id="1_y1qt1"]
+[ext_resource type="Texture2D" uid="uid://bf8db42x447lq" path="res://Enemies/MonsterType/assets/Goblin.png" id="2_cx06c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2q0j"]
 albedo_color = Color(0.132504, 0.175819, 0.0721083, 1)
@@ -23,8 +24,18 @@ billboard = 1
 text = "BEAN #1"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00941682, 0.00817895, 0.027885)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.00941682, 0.00817895, 0.027885)
+visible = false
 mesh = SubResource("CapsuleMesh_8eo7k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_ykk1g")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 2
+double_sided = false
+texture_filter = 0
+texture = ExtResource("2_cx06c")
