@@ -1,8 +1,10 @@
 extends CharacterBody3D
 class_name Enemy
 
-var minHealth = 1
-var maxHealth = 5
+var minHealth
+var maxHealth
+var minHealthCap
+var maxHealthCap
 var damage: int = 10
 @onready var label = $Label
 @export var attackDistance = 20.0

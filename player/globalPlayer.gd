@@ -5,6 +5,8 @@ var rarity = ""
 var player : CharacterBody3D = null
 signal update
 
+var score
+
 func _ready():
 	return
 

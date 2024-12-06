@@ -252,7 +252,6 @@ func activatePerfectCombo():
 	resetCombo()
 
 func resetCombo():
-	print("RESETTED")
 	comboStreak = 0
 	comboFirstEnemyContact = false
 	perfectComboActivated = false

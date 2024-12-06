@@ -3,7 +3,7 @@ extends Node
 const INSTRUMENT_PATH = "res://player/assets/"
 
 func _ready():
-	print(instrumentSounds["drum"])
+	pass
 
 var instruments = {
 	"lute": {
