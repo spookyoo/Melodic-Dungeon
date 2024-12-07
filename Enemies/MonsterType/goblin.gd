@@ -8,8 +8,14 @@ func _ready():
 	minHealthCap = 4
 	maxHealthCap = 5
 	
+	hpScale(GlobalPlayer.floor)
+	
 	speed = 18
 	damage = 6
 	super._ready()
 	
 	#print("Goblin keys: " + keys)
+
+func hpScale(floor):
+	return
+	

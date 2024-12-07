@@ -1,13 +1,20 @@
 extends Enemy
 class_name Boss
 
-var health = 35
+var health
+signal bossDefeated
+
 @export var randomizeTimer: Timer
 
 var isVulnerable: bool = true
 var isRandomizing: bool = false
 
 func _ready():
+	minHealth = 1 #UNUSED BUT STOPS CRASHING
+	maxHealth = 30
+	
+	health = 10
+	
 	super()
 	keys = genRandomkeys(health)
 	keyQueue = keys.split(" ")
@@ -21,13 +28,13 @@ func damageBoss():
 	currentKeyIdx += 1
 		
 	if health <= 0:
-		defeat()
-		
-func defeat():
-	print("Boss defeated!")
-	get_tree().change_scene_to_file("res://menus/victoryScreen/victoryScene.tscn")
-	queue_free()
+		print("DEFEAT")
+		die()
 
+func die():
+	print("BOSS DEFEATED")
+	bossDefeated.emit()
+	call_deferred("queue_free")
 
 func _on_randomize_timer_timeout() -> void:
 	isVulnerable = false

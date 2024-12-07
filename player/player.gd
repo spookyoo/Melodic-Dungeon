@@ -214,7 +214,6 @@ func handleInput():
 					#print("Wrong key pressed: ", key)
 					playIncorrect()
 					takeDamage(10)
-					print(playerHealth)
 					notes.incorrect()
 					break
 					

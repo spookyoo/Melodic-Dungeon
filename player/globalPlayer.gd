@@ -6,6 +6,8 @@ var player : CharacterBody3D = null
 signal update
 
 var score
+var floor = 1
+var time = 0.0
 
 func _ready():
 	return

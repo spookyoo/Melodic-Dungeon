@@ -1,9 +1,10 @@
 extends Node3D
 
+@export var newFloorScene : PackedScene
 @export var roomScene : PackedScene
 @export var dungeonWidth : int = 9
 @export var dungeonHeight : int = 7
-@export var mainBranchLength : int = 3             # default is 8
+@export var mainBranchLength : int = 1             # default is 8
 @export var roomSize : Vector3 = Vector3(30,0,30)
 
 #@onready var camera = $Camera3D
@@ -34,8 +35,8 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
-		get_tree().change_scene_to_file("res://environment/gen_test.tscn")
 		GlobalPlayer.instrument = ""
+		get_tree().change_scene_to_file("res://environment/gen_test.tscn")
 
 func generateDungeon():
 	floors = []
@@ -194,9 +195,10 @@ func roomActivate(x,z):
 			
 			# put boss in the center
 			var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
-			bossInstance.global_position = roomCenter
 			
 			add_child(bossInstance)
+			bossInstance.global_position = roomCenter
+			bossInstance.bossDefeated.connect(self.newFloor)
 			remainingEnemies = 1    # track boss as the last enemy
 			await isEnemiesDefeated([bossInstance])
 		else:
@@ -212,7 +214,13 @@ func spawnEnemies(x, z, monsterType) -> Array:
 	var roomCenter = Vector3(x * roomSize.x, 0, z * roomSize.z)
 	var roomMin = Vector3(roomCenter.x - roomSize.x / 2 + 5, 0, roomCenter.z - roomSize.z / 2 + 5)
 	var roomMax = Vector3(roomCenter.x + roomSize.x / 2 - 5, 0, roomCenter.z + roomSize.z / 2 - 5)
-	var enemyCount = randi_range(3,5)
+	var enemyCount
+	if monsterType == 0:
+		enemyCount = randi_range(2,3)
+	elif monsterType == 1:
+		enemyCount = randi_range(3,5)
+	if GlobalPlayer.floor > 2:
+		enemyCount += 2
 	#var playerPos = get_node("Player").global_transform.origin
 	
 	for i in range(enemyCount):
@@ -274,6 +282,12 @@ func completedDoors(x,z):
 				if [adjacent[0],adjacent[1]] == [room[0]+1,room[1]]:
 					directions.append("left")
 		node.openDoors(directions)
+
+func newFloor():
+	await get_tree().create_timer(1).timeout
+	GlobalPlayer.floor += 1
+	#GlobalPlayer.time = %Panel.time
+	get_tree().change_scene_to_file("res://environment/gen_test.tscn")
 
 #HELPER FUNCTIONS
 func getAdjacent(x,z):

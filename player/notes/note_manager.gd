@@ -14,7 +14,7 @@ func correct(mark,enemy):
 	add_child(newNote)
 
 func incorrect():
-	print("INCORRECT")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://com8gxm4ey72s"]
+[gd_scene load_steps=28 format=3 uid="uid://com8gxm4ey72s"]
 
 [ext_resource type="Script" path="res://utility/generation.gd" id="1_0vwcg"]
 [ext_resource type="PackedScene" uid="uid://37tl0srs6y5x" path="res://environment/roomFin.tscn" id="2_tnlji"]
 [ext_resource type="PackedScene" uid="uid://dnapim5r7j76g" path="res://Enemies/enemy.tscn" id="3_4egpq"]
 [ext_resource type="PackedScene" uid="uid://dc25vi7wiy0wt" path="res://player/player.tscn" id="3_40lm6"]
 [ext_resource type="Script" path="res://player/hud/mapHud.gd" id="6_1tvm3"]
+[ext_resource type="Script" path="res://player/hud/map.gd" id="6_falcd"]
 [ext_resource type="Script" path="res://Enemies/AttackQueue.gd" id="6_lhtfu"]
 [ext_resource type="PackedScene" uid="uid://cerhmeifo2c0b" path="res://player/hud/hudTile.tscn" id="7_ucryf"]
 [ext_resource type="Script" path="res://player/hud/score.gd" id="8_3ax2c"]
@@ -61,6 +62,7 @@ font_color = Color(0.996078, 0.847059, 0.364706, 1)
 
 [node name="genTest" type="Node3D"]
 script = ExtResource("1_0vwcg")
+newFloorScene = null
 roomScene = ExtResource("2_tnlji")
 enemyScene = ExtResource("3_4egpq")
 
@@ -90,6 +92,7 @@ theme_override_constants/margin_bottom = 25
 [node name="Map" type="Control" parent="HUD/Container"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("6_falcd")
 
 [node name="Back" type="TextureRect" parent="HUD/Container/Map"]
 modulate = Color(0.176419, 0.176419, 0.176419, 1)
@@ -132,6 +135,22 @@ theme_override_constants/v_separation = 0
 columns = 5
 script = ExtResource("6_1tvm3")
 gridTile = ExtResource("7_ucryf")
+
+[node name="FloorLabel" type="Label" parent="HUD/Container/Map"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_top = 210.0
+offset_right = -32.0
+offset_bottom = 238.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_w6vw3")
+theme_override_font_sizes/font_size = 28
+text = "Floor 1"
+horizontal_alignment = 1
 
 [node name="Score" type="Control" parent="HUD/Container"]
 layout_mode = 2
@@ -282,6 +301,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="HUD/Container/Time"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
