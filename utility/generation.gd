@@ -287,7 +287,8 @@ func newFloor():
 	await get_tree().create_timer(1).timeout
 	GlobalPlayer.floor += 1
 	#GlobalPlayer.time = %Panel.time
-	get_tree().change_scene_to_file("res://environment/gen_test.tscn")
+	#get_tree().change_scene_to_file("res://environment/gen_test.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://environment/gen_test.tscn")
 
 #HELPER FUNCTIONS
 func getAdjacent(x,z):

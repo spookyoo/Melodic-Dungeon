@@ -62,7 +62,6 @@ font_color = Color(0.996078, 0.847059, 0.364706, 1)
 
 [node name="genTest" type="Node3D"]
 script = ExtResource("1_0vwcg")
-newFloorScene = null
 roomScene = ExtResource("2_tnlji")
 enemyScene = ExtResource("3_4egpq")
 
