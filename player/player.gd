@@ -44,6 +44,7 @@ var correctSounds = []
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	score = GlobalPlayer.score
 	GlobalPlayer.player = self
 	GlobalPlayer.update.connect(self.applyInstrument)
 	GlobalPlayer.instantiate()

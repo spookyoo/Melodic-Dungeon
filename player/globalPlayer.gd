@@ -5,7 +5,7 @@ var rarity = ""
 var player : CharacterBody3D = null
 signal update
 
-var score
+var score = 0
 var floor = 1
 var time = 0.0
 

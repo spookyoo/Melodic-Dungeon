@@ -13,7 +13,7 @@ extends Node3D
 
 @export var enemyScene : PackedScene
 var remainingEnemies : int = 0
-
+var floorChange = false
 var floors = []
 var mainBranch = []
 var endRoom = []
@@ -288,10 +288,14 @@ func completedDoors(x,z):
 		node.openDoors(directions)
 
 func newFloor():
-	await get_tree().create_timer(1).timeout
-	GlobalPlayer.floor += 1
-	GlobalPlayer.time = %Panel.time
-	get_tree().call_deferred("change_scene_to_file", "res://environment/gen_test.tscn")
+	if !floorChange:
+		floorChange = true
+		await get_tree().create_timer(1).timeout
+		GlobalPlayer.floor += 1
+		GlobalPlayer.time = %Panel.time
+		GlobalPlayer.score = $Player.score
+		get_tree().call_deferred("change_scene_to_file", "res://environment/gen_test.tscn")
+	pass
 
 #HELPER FUNCTIONS
 func getAdjacent(x,z):
