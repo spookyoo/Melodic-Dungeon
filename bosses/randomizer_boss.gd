@@ -13,7 +13,7 @@ func _ready():
 	minHealth = 1 #UNUSED BUT STOPS CRASHING
 	maxHealth = 30
 	
-	health = 10
+	health = clamp(10 + (GlobalPlayer.floor * 3), 10, maxHealth) #DEFAULT 2
 	
 	super()
 	keys = genRandomkeys(health)
@@ -28,11 +28,9 @@ func damageBoss():
 	currentKeyIdx += 1
 		
 	if health <= 0:
-		print("DEFEAT")
 		die()
 
 func die():
-	print("BOSS DEFEATED")
 	bossDefeated.emit()
 	call_deferred("queue_free")
 

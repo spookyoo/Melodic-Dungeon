@@ -15,6 +15,7 @@ func _on_retry_button_pressed():
 	GlobalPlayer.instrument = ""
 	GlobalPlayer.rarity = ""
 	GlobalPlayer.score = 0
+	GlobalPlayer.floor = 1
 	get_tree().change_scene_to_file("res://environment/gen_test.tscn")
 	
 

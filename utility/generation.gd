@@ -1,10 +1,10 @@
 extends Node3D
 
-@export var newFloorScene : PackedScene
 @export var roomScene : PackedScene
 @export var dungeonWidth : int = 9
 @export var dungeonHeight : int = 7
-@export var mainBranchLength : int = 1             # default is 8
+@export var mainBranchLength : int = 3             # default is 8
+@export var maxMainLength : int = 12
 @export var roomSize : Vector3 = Vector3(30,0,30)
 
 #@onready var camera = $Camera3D
@@ -27,6 +27,7 @@ var endNode = []
 var completed = []
 
 func _ready():
+	mainBranchLength = clamp(3 + ((GlobalPlayer.floor - 1) * 2), 3, maxMainLength) #DEFAULT 3
 	generateDungeon()
 	#for floor in floors:
 		#print(floor)
@@ -36,6 +37,9 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("reload"):
 		GlobalPlayer.instrument = ""
+		GlobalPlayer.rarity = ""
+		GlobalPlayer.score = 0
+		GlobalPlayer.floor = 1
 		get_tree().change_scene_to_file("res://environment/gen_test.tscn")
 
 func generateDungeon():
@@ -219,7 +223,7 @@ func spawnEnemies(x, z, monsterType) -> Array:
 		enemyCount = randi_range(2,3)
 	elif monsterType == 1:
 		enemyCount = randi_range(3,5)
-	if GlobalPlayer.floor > 2:
+	if GlobalPlayer.floor > 3:
 		enemyCount += 2
 	#var playerPos = get_node("Player").global_transform.origin
 	
@@ -286,8 +290,7 @@ func completedDoors(x,z):
 func newFloor():
 	await get_tree().create_timer(1).timeout
 	GlobalPlayer.floor += 1
-	#GlobalPlayer.time = %Panel.time
-	#get_tree().change_scene_to_file("res://environment/gen_test.tscn")
+	GlobalPlayer.time = %Panel.time
 	get_tree().call_deferred("change_scene_to_file", "res://environment/gen_test.tscn")
 
 #HELPER FUNCTIONS
