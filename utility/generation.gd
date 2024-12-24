@@ -255,6 +255,9 @@ func spawnEnemies(x, z, monsterType) -> Array:
 
 func isEnemiesDefeated(enemies : Array):
 	while remainingEnemies > 0:
+		if not is_instance_valid(get_tree()):
+			return
+		
 		await get_tree().create_timer(0.5).timeout
 		remainingEnemies = 0
 		for i in range(enemies.size()):

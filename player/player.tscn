@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dc25vi7wiy0wt"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_jqcp1"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_jqcp1"]
 [ext_resource type="Script" path="res://player/notes/note_manager.gd" id="2_aveqo"]
 [ext_resource type="Script" path="res://player/sounds/audio_manager.gd" id="2_q676q"]
 [ext_resource type="AudioStream" uid="uid://do1h2ypl66ky5" path="res://player/sounds/walkingSound.mp3" id="2_vdtyl"]

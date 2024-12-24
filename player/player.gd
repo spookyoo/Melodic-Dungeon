@@ -10,7 +10,7 @@ extends CharacterBody3D
 var lastCollided : Enemy = null
 var maxHealth = 100
 var playerHealth = 100
-var score = 0
+var score
 var currentKeyIdx = 0
 
 signal hpUpdate
@@ -236,7 +236,9 @@ func takeDamage(amount: int):
 func die():
 	velocity = Vector3.ZERO
 	set_process(false)
-	get_tree().change_scene_to_file("res://menus/gameOver/game_over.tscn")
+	GameManager.change_scene("res://environment/gen_test.tscn")
+	await get_tree().process_frame
+	queue_free()
 	
 func activatePerfectCombo():
 	perfectComboActivated = true

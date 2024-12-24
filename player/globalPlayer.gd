@@ -14,7 +14,8 @@ func _ready():
 
 func instantiate():
 	if instrument == "":
-		changeInstrument(GlobalInstruments.instruments.keys().pick_random(),"common")
+		#changeInstrument(GlobalInstruments.instruments.keys().pick_random(),"common")
+		changeInstrument(GlobalInstruments.instruments.keys().pick_random(),"rare")
 	notifyUpdate()
 
 func changeInstrument(newInstrument, newRarity):

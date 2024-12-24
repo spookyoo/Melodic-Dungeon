@@ -6,6 +6,7 @@ extends Control
 func _ready():
 	player.scoreUpdate.connect(self.update)
 	instantiate()
+	update(GlobalPlayer.score)
 	pass
 
 func instantiate():
